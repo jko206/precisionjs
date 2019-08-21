@@ -1,1 +1,1 @@
-import parser from './util/parser'
+import parser from "./util/parser";
