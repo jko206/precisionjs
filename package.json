@@ -6,10 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jaiko86/precisionjs.git"
-  },
+  "repository": "git+https://github.com/jaiko86/precisionjs.git",
   "keywords": [
     "math",
     "arithmetic"
@@ -19,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/jaiko86/precisionjs/issues"
   },
-  "homepage": "https://github.com/jaiko86/precisionjs#readme"
+  "homepage": "https://github.com/jaiko86/precisionjs#readme",
+  "dependencies": {
+    "jest": "^24.9.0"
+  }
 }
