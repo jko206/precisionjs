@@ -4,7 +4,7 @@
   "description": "Do math in JS with precision",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": "git+https://github.com/jaiko86/precisionjs.git",
   "keywords": [
@@ -19,5 +19,8 @@
   "homepage": "https://github.com/jaiko86/precisionjs#readme",
   "dependencies": {
     "jest": "^24.9.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.2.1"
   }
 }
