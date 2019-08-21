@@ -1,0 +1,23 @@
+{
+  "name": "precisionjs",
+  "version": "0.1.0",
+  "description": "Do math in JS with precision",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaiko86/precisionjs.git"
+  },
+  "keywords": [
+    "math",
+    "arithmetic"
+  ],
+  "author": "J. Ko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jaiko86/precisionjs/issues"
+  },
+  "homepage": "https://github.com/jaiko86/precisionjs#readme"
+}
