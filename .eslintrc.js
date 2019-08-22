@@ -5,4 +5,11 @@ module.exports = {
   rules: {
     indent: ['error', 2],
   },
+  parserOptions: {
+    ecmaVersion: 7,
+    sourceType: 'module',
+    // ecmaFeatures: {
+    //     jsx: true,
+    // }
+  },
 };
