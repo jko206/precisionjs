@@ -1,7 +1,24 @@
 import parser from '~/src/util/parser';
 
 describe('parse decimal', () => {
-  it('parse num passed as string', () => {});
+  const tests = [
+    {
+      it: 'parse num passed as string',
+      input: '1234567890',
+      output: {
+        numer: 1234567890,
+        denom: 1,
+      },
+    },
+  ];
+  it('parse num passed as string', () => {
+    const input = '123456789';
+    const output = {
+      numer: [123456789],
+      denom: [1],
+    };
+    expect(parser(input)).toBe(output);
+  });
   it('parse num passed as number', () => {});
 });
 
