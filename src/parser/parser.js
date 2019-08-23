@@ -1,5 +1,5 @@
 import { MAX_ARNUM_DIGIT } from '~/src/constants';
-import { isPureInt, isSciNot, isStringInt, isSafeInt } from '~/src/parser/tester';
+import { isPureInt, isSciNot, isStringInt, isSafeInt, isNeg } from '~/src/parser/tester';
 /*
 Is safe pure int
 Is pure int
@@ -17,7 +17,7 @@ export function getArnumFromPureInt(n) {
   return arr;
 }
 
-export function chunkString(str) {
+export function getArnumFromStringInt(str) {
   const maxLength = `${MAX_ARNUM_DIGIT}`.length;
   const arr = [];
   while (str.length >= maxLength) {
@@ -25,7 +25,7 @@ export function chunkString(str) {
     str = str.substring(maxLength - 1);
   }
   arr.push(str);
-  return arr;
+  return arr.map(digit => parseInt(digit));
 }
 
 function trimZeroes(str) {
@@ -68,23 +68,39 @@ export function getStringNumFromSciNot(input) {
   return `${integer}`.replace(/^0+/, '') || '0';
 }
 
-export function parseInteger(input) {
-  if (isPureInt(input)) {
+export default function parser(input) {
+  if (isZero(input)) {
     return {
-      numer: getArnumFromPureInt(Math.abs(input)),
+      numer: [0],
       denom: [1],
-      positivity: input > 0 ? 1 : input < 0 ? -1 : 0,
+      positivity: 0,
     };
   }
-  if (isSciNot) {
+  let positivity = isNeg(input) ? -1 : 1;
+  if (positivity === -1) {
+    if (typeof input === 'number') input *= -1;
+    else if (typeof input === 'string') input = input.substr(1);
+  }
+
+  if (isPureInt(input)) {
+    return {
+      numer: getArnumFromPureInt(input),
+      denom: [1],
+      positivity,
+    };
+  }
+
+  if (isSciNot(input + '')) {
     input = getStringNumFromSciNot(input + '');
   }
-}
-
-const parsers = [parseInteger];
-
-export default function parser(input) {
-  const output = parsers.find(fn => fn(input));
-  if (!output) throw new Error(`Invalid input: ${input}`);
-  return output;
+  if (isStringInt(input)) {
+    return {
+      numer: getArnumFromStringInt(input),
+      denom: [1],
+      positivity,
+    };
+  }
+  if (isDecimal(input)) {
+    input = trimZeroes(input);
+  }
 }

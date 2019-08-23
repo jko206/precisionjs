@@ -5,6 +5,7 @@ import {
   isSafeArnumDigit,
   isSciNot,
   isSciNotInt,
+  isDecimal,
 } from '~/src/parser/tester';
 
 describe('isPureInt', () => {
@@ -40,5 +41,16 @@ describe('isSciNot', () => {
     expect(isSciNot(1.234e4)).toBe(false); // 12340
     expect(isSciNot('-1.234e-400.2')).toBe(false);
     expect(isSciNot('-1.234e-4a')).toBe(false);
+  });
+});
+
+describe('isDecimal', () => {
+  it('correctly identifies valid decimal', () => {
+    expect(isDecimal('0.001')).toBe(true);
+    expect(isDecimal('1.001')).toBe(true);
+    expect(isDecimal('1234.001')).toBe(true);
+    expect(isDecimal('1234.0')).toBe(true);
+
+    expect(isDecimal('01234.0')).toBe(false);
   });
 });
