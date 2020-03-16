@@ -1,6 +1,6 @@
 import isNegative from './negative'
 
-describe('isDecimal', () => {
+describe('negative.js', () => {
   it('correctly identifies valid negative', () => {
     expect(isNegative(-1)).toBe(true)
     expect(isNegative(-1e200)).toBe(true)
