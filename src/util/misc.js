@@ -3,5 +3,5 @@ export const stripZeros = str => {
   if(str.includes('.')) str = str.replace(/0+$/, '')
   if(str.indexOf('.') === str.length - 1) str = str.replace('.', '')
 
-  return str
+  return str || '0'
 }
