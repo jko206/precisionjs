@@ -21,6 +21,10 @@ describe('arnum.js', () => {
     expect(getArnum('1')).toEqual([1])
     expect(getArnum('1000000')).toEqual([1000000])
     
+    expect(getArnum(`123456789012345678901`)).toEqual([5678901, 8901234, 1234567])
+
+    expect(getArnum(`100000020000003`)).toEqual([3, 2, 1])
+
     expect(getArnum(`${MAX_ARNUM_DIGIT}`)).toEqual([0, 1])
 
     const pow2 = getPowerOfArnumBase(2)
