@@ -6,3 +6,8 @@ export const MAX_ARNUM_DIGIT = (() => {
 })();
 
 export const LOG_10_ARNUM_BASE = Math.log10(MAX_ARNUM_DIGIT)
+
+export const ZERO = {
+  numerator: [0],
+  denominator: [1],
+}
