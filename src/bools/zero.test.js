@@ -21,5 +21,9 @@ describe('isDecimal', () => {
     expect(isZero('.')).toBe(false)
     expect(isZero('-.')).toBe(false)
     expect(isZero('-')).toBe(false)
+    expect(isZero('0.1')).toBe(false)
+    expect(isZero('0.1234567')).toBe(false)
+    expect(isZero('1')).toBe(false)
+    expect(isZero('1234567')).toBe(false)
   })
 });
