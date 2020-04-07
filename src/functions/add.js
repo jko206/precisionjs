@@ -4,27 +4,27 @@ import { MAX_ARNUM_DIGIT } from '../constants'
 const carryToNextDigit = arnum => {
   let toCarry = 0
   const processed = arnum.map(digit => {
-    const newDigit = digit%MAX_ARNUM_DIGIT + toCarry
-    toCarry = Math.floor(digit/MAX_ARNUM_DIGIT)
-    return newDigit
+    const newDigit = digit + toCarry
+    toCarry = Math.floor(newDigit/MAX_ARNUM_DIGIT)
+
+    return newDigit%MAX_ARNUM_DIGIT
   })
-  while(toCarry > MAX_ARNUM_DIGIT) {
-    processed.push(toCarry%MAX_ARNUM_DIGIT)
-    toCarry = Math.floor(toCarry/MAX_ARNUM_DIGIT)
-  }
   if(toCarry) processed.push(toCarry)
+  
   return processed
 }
 
-export const addArnums = (...nums) => carryToNextDigit(nums.reduce((subTotal, arnum, index) => {
-  const total = []
+export const addArnums = (...nums) => nums.reduce((subTotal, arnum) => {
+  let total = []
+  let carry = false
   while(subTotal.length || arnum.length) {
     const n1 = subTotal.shift() || 0
     const n2 = arnum.shift() || 0
-    total.push(n1 + n2)
+    const sum = n1 + n2
+    total.push(sum)
+    
+    if (sum >= MAX_ARNUM_DIGIT) carry = true
   }
-  return index%(MAX_ARNUM_DIGIT / 10) === 0 
-    ? carryToNextDigit(total) 
-    : total 
-}, [0]))
+  return carry ? carryToNextDigit(total) : total
+})
 
