@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/jaiko86/precisionjs#readme",
   "dependencies": {
-    "jest": "^24.9.0"
+    "global": "^4.4.0",
+    "jest": "^24.9.0",
+    "typescript": "^3.8.3"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
