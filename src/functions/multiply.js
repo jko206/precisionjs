@@ -19,6 +19,6 @@ const multiplyTwoArnums = (a, b) => {
   return addArnums(...products)
 }
 
-const multiplyArnums =  (...nums) => nums.reduce(multiplyTwoArnums)
+export const multiplyArnums =  (...nums) => nums.reduce(multiplyTwoArnums)
 
 export default multiplyArnums
