@@ -2,7 +2,7 @@
   "name": "precisionjs",
   "version": "0.1.0",
   "description": "Do math in JS with precision",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "jest"
   },
