@@ -1,4 +1,4 @@
-import { MAX_ARNUM_DIGIT } from '~/src/constants';
+import { MAX_ARNUM_DIGIT } from '../constants';
 
 export default function (str) {
   const maxLength = `${MAX_ARNUM_DIGIT}`.length - 1;
