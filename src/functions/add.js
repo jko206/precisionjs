@@ -14,6 +14,8 @@ const carryToNextDigit = arnum => {
   return processed
 }
 
+// testing
+
 export const addArnums = (...nums) => nums.reduce((subTotal, arnum) => {
   let total = []
   let carry = false
