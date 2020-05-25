@@ -1,5 +1,3 @@
-type simple = number
-
 type arnum = number[]
 
 type integer = {
