@@ -1,7 +1,10 @@
-import { MAX_ARNUM_DIGIT } from '../constants'
+import { ARNUM_BASE } from '../constants'
 import { terminatingDec, repeatingDec } from './decimal'
 
 describe('decimal.js', () => {
+  it('fake test', () => {
+    expect(true).toBe(true)
+  })
   // it('parses terminating decimal', () => {
   //   expect(terminatingDec('1/10')).toEqual({
   //     numerator: [1],
