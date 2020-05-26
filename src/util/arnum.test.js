@@ -1,10 +1,10 @@
 import getArnum from './arnum'
-import {MAX_ARNUM_DIGIT} from '~/src/constants'
+import {ARNUM_BASE} from '~/src/constants'
 import arnum from './arnum'
 
-// 3 => MAX_ARNUM_DIGIT**3
+// 3 => ARNUM_BASE**3
 function getPowerOfArnumBase(exp) {
-  const maxArnumZeroCount = `${MAX_ARNUM_DIGIT}`.length - 1
+  const maxArnumZeroCount = `${ARNUM_BASE}`.length - 1
   const zeros = '0'.repeat(maxArnumZeroCount)
   
   return '1' + zeros.repeat(exp)
@@ -13,7 +13,7 @@ function getPowerOfArnumBase(exp) {
 function getRandomArnumDigit() {
   let r = 0.01
   while(r < 0.1) r = Math.random() // so as to not get an arnumDigit that has a leading 0
-  return Math.floor(r * MAX_ARNUM_DIGIT)
+  return Math.floor(r * ARNUM_BASE)
 }
 
 describe('arnum.js', () => {
@@ -25,7 +25,7 @@ describe('arnum.js', () => {
 
     expect(getArnum(`100000020000003`)).toEqual([3, 2, 1])
 
-    expect(getArnum(`${MAX_ARNUM_DIGIT}`)).toEqual([0, 1])
+    expect(getArnum(`${ARNUM_BASE}`)).toEqual([0, 1])
 
     const pow2 = getPowerOfArnumBase(2)
     expect(getArnum(pow2)).toEqual([0, 0, 1])

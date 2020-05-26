@@ -1,5 +1,5 @@
 import {compareArnum} from './comparator'
-import {MAX_ARNUM_DIGIT} from '../constants'
+import {ARNUM_BASE} from '../constants'
 
 // PRE: minuend >= subtrahend
 export const subtractArnums = (minuend, subtrahend) => {
@@ -12,7 +12,7 @@ export const subtractArnums = (minuend, subtrahend) => {
   let carryToLastDigit = false
   while(minuend[place] !== undefined) {
     if(carryToLastDigit) {
-      diff[place - 1] += MAX_ARNUM_DIGIT
+      diff[place - 1] += ARNUM_BASE
     }
     const minuendDigit = minuend[place] + (carryToLastDigit ? -1 : 0)
     const subtrahendDigit = subtrahend[place] || 0

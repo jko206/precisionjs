@@ -1,9 +1,9 @@
 import { addArnums } from '../functions/add'
 
 /**
- * @param {a} obj An array of numbers, where each index has a 0 <= number < MAX_ARNUM_DIGIT
- * @param {b} obj An array of numbers, where each index has a 0 <= number < MAX_ARNUM_DIGIT
- * @return {Array} An array of numbers, where each index has a 0 <= number < MAX_ARNUM_DIGIT
+ * @param {a} obj An array of numbers, where each index has a 0 <= number < ARNUM_BASE
+ * @param {b} obj An array of numbers, where each index has a 0 <= number < ARNUM_BASE
+ * @return {Array} An array of numbers, where each index has a 0 <= number < ARNUM_BASE
  * 
  * ex: multiply([3,2,1], [0,1]) => [0, 3, 2, 1]
  */

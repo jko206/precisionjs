@@ -1,7 +1,7 @@
-import { MAX_ARNUM_DIGIT } from '../constants';
+import { ARNUM_BASE } from '../constants';
 
 export default function (str) {
-  const maxLength = `${MAX_ARNUM_DIGIT}`.length - 1;
+  const maxLength = `${ARNUM_BASE}`.length - 1;
   let arr = [];
   while (str.length > maxLength) {
     const chunk = str.substring(str.length - maxLength)

@@ -1,4 +1,4 @@
-import { MAX_ARNUM_DIGIT } from '../constants'
+import { ARNUM_BASE } from '../constants'
 import { terminatingDec, repeatingDec } from './decimal'
 
 describe('decimal.js', () => {

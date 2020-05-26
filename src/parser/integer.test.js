@@ -1,5 +1,5 @@
 import parseInteger from './integer'
-import {MAX_ARNUM_DIGIT} from '../constants'
+import {ARNUM_BASE} from '../constants'
 
 
 
@@ -16,7 +16,7 @@ describe('integer.js', () => {
       denominator: [1],
     })
 
-    const zeros = `${MAX_ARNUM_DIGIT}`.substring(1)
+    const zeros = `${ARNUM_BASE}`.substring(1)
     const random = Math.floor(Math.random() * 10000)
 
     expect(parseInteger(`${random}${zeros}`)).toEqual({

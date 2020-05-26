@@ -1,13 +1,13 @@
 // import multiply from './multiply'
-import { MAX_ARNUM_DIGIT } from '../constants'
+import { ARNUM_BASE } from '../constants'
 
 const carryToNextDigit = arnum => {
   let toCarry = 0
   const processed = arnum.map(digit => {
     const newDigit = digit + toCarry
-    toCarry = Math.floor(newDigit/MAX_ARNUM_DIGIT)
+    toCarry = Math.floor(newDigit/ARNUM_BASE)
 
-    return newDigit%MAX_ARNUM_DIGIT
+    return newDigit%ARNUM_BASE
   })
   if(toCarry) processed.push(toCarry)
   
@@ -25,7 +25,7 @@ export const addArnums = (...nums) => nums.reduce((subTotal, arnum) => {
     const sum = n1 + n2
     total.push(sum)
     
-    if (sum >= MAX_ARNUM_DIGIT) carry = true
+    if (sum >= ARNUM_BASE) carry = true
   }
   return carry ? carryToNextDigit(total) : total
 })
