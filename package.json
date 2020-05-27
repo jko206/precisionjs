@@ -2,9 +2,11 @@
   "name": "precisionjs",
   "version": "0.1.2",
   "description": "Do math in JS with precision",
-  "main": "src/index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "tsc"
   },
   "repository": "git+https://github.com/jaiko86/precisionjs.git",
   "keywords": [
@@ -16,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/jaiko86/precisionjs/issues"
   },
-  "homepage": "https://github.com/jaiko86/precisionjs#readme",
+  "homepage": "https://precision.js.org/",
   "dependencies": {
     "@types/jest": "^25.2.3",
     "@types/node": "^12.7.4",
