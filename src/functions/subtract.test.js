@@ -1,5 +1,5 @@
 import { subtractArnums } from './subtract'
-import {ARNUM_BASE} from '../constants'
+import { ARNUM_BASE } from '../constants'
 
 describe('subtractArnums', () => {
   test('subtracts arnums', () => {
@@ -17,5 +17,14 @@ describe('subtractArnums', () => {
 
     result = subtractArnums([0, 0, 0, 1], [1])
     expect(result).toEqual([ARNUM_BASE - 1, ARNUM_BASE - 1, ARNUM_BASE - 1])
+
+    result = subtractArnums([1], [1])
+    expect(result).toEqual([0])
+
+    result = subtractArnums([0, 0, 0, 1], [0, 0, 0, 1])
+    expect(result).toEqual([0])
+
+    result = subtractArnums([1, 1, 1, 1], [1, 1, 1, 1])
+    expect(result).toEqual([0])
   })
 })

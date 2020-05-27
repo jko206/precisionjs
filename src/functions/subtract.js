@@ -29,11 +29,3 @@ export const subtractArnums = (minuend, subtrahend) => {
 
   return diff
 }
-
-/*
-2   1   7   3
--       9   7
----------------
-            6
-
-*/
