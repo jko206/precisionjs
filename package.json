@@ -11,7 +11,8 @@
   "repository": "git+https://github.com/jaiko86/precisionjs.git",
   "keywords": [
     "math",
-    "arithmetic"
+    "arithmetic",
+    "precision"
   ],
   "author": "J. Ko",
   "license": "ISC",
