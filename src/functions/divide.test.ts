@@ -117,7 +117,6 @@ describe('double arnums, against multiplyArnums()', () => {
     test(`Test #${index + 1}`, () => {
       const output = double(input)
       const output2 = multiplyArnums(input, [2])
-      index === 2 && console.log(output2)
       expect(output).toEqual(output2)
     })
   })
