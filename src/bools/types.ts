@@ -1,11 +1,11 @@
-type arnum = number[]
+export type arnum = number[]
 
-type integer = {
+export type integer = {
   positivity: -1 | 0 | 1
   value: arnum
 }
 
-type rational = {
+export type rational = {
   positivity: -1 | 0 | 1
   numerator: arnum
   denominator: arnum
