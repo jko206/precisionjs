@@ -4,7 +4,7 @@ module.exports = {
   },
   testEnvironment: 'node',
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  testRegex: '.*.test.(tsx|ts)$',
+  testRegex: '.*.test.(js|tsx|ts)$',
   moduleDirectories: ['./node_modules'],
   runner: 'jest-serial-runner',
 }
