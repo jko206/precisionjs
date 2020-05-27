@@ -1,9 +1,18 @@
 import { arnum } from '../bools/types'
+import { comparator } from './comparator'
 
-const divideArnums = (n1: arnum, n2: arnum): { quotient: arnum; remainder?: arnum } => {
+export const divideArnums = (
+  dividend: arnum,
+  divisor: arnum,
+): { quotient: arnum; remainder?: arnum } => {
+  const geometricSeriesOfTwo: arnum[] = []
+  let double = [...divisor]
+  comparator([1], [0])
+  // while (comparator(double, dividend) < 1) {
+  //   geometricSeriesOfTwo.push(double)
+  //   double =
+  // }
   return {
-    quotient: [],
+    quotient: [dividend[0] / divisor[0]],
   }
 }
-
-export const testDivide = (n1: number, n2: number): number => Math.floor(n1 / n2)
