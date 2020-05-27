@@ -1,12 +1,14 @@
+export type positivity = -1 | 0 | 1
+
 export type arnum = number[]
 
 export type integer = {
-  positivity: -1 | 0 | 1
+  positivity: positivity
   value: arnum
 }
 
 export type rational = {
-  positivity: -1 | 0 | 1
+  positivity: positivity
   numerator: arnum
   denominator: arnum
 }
