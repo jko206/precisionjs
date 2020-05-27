@@ -9,7 +9,7 @@ describe('isDecimal', () => {
     expect(isZero('0.000')).toBe(true)
     expect(isZero('000.000')).toBe(true)
     expect(isZero('00000')).toBe(true)
-    
+
     expect(isZero(-0)).toBe(true)
     expect(isZero('-0.')).toBe(true)
     expect(isZero('-.0')).toBe(true)
@@ -17,7 +17,7 @@ describe('isDecimal', () => {
     expect(isZero('-0.000')).toBe(true)
     expect(isZero('-000.000')).toBe(true)
     expect(isZero('-00000')).toBe(true)
-    
+
     expect(isZero('.')).toBe(false)
     expect(isZero('-.')).toBe(false)
     expect(isZero('-')).toBe(false)
@@ -26,4 +26,4 @@ describe('isDecimal', () => {
     expect(isZero('1')).toBe(false)
     expect(isZero('1234567')).toBe(false)
   })
-});
+})

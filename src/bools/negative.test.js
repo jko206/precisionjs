@@ -15,7 +15,5 @@ describe('negative.js', () => {
     expect(isNegative(Infinity)).toBe(false)
     expect(isNegative(0.0001)).toBe(false)
     expect(isNegative(0.0001)).toBe(false)
-
-
   })
-});
+})

@@ -12,4 +12,4 @@ module.exports = {
     //     jsx: true,
     // }
   },
-};
+}

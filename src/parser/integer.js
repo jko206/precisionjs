@@ -1,6 +1,6 @@
 import getArnum from '../util/arnum'
 
-export default n => ({
+export default (n) => ({
   numerator: getArnum(n),
-  denominator: getArnum(1)
+  denominator: getArnum(1),
 })

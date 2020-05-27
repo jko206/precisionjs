@@ -1,15 +1,15 @@
-import { ARNUM_BASE } from '../constants';
+import { ARNUM_BASE } from '../constants'
 
 export default function (str) {
-  const maxLength = `${ARNUM_BASE}`.length - 1;
-  let arr = [];
+  const maxLength = `${ARNUM_BASE}`.length - 1
+  let arr = []
   while (str.length > maxLength) {
     const chunk = str.substring(str.length - maxLength)
-    arr.push(chunk);
-    str = str.substring(0, str.length - maxLength);
+    arr.push(chunk)
+    str = str.substring(0, str.length - maxLength)
   }
-  arr.push(str);
-  arr = arr.map(digit => parseInt(digit));
-  while(arr[arr.length - 1] === 0) arr.pop()
+  arr.push(str)
+  arr = arr.map((digit) => parseInt(digit))
+  while (arr[arr.length - 1] === 0) arr.pop()
   return arr
 }

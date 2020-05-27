@@ -13,4 +13,4 @@ describe('natural.js', () => {
     expect(isNatural('000')).toBe(false)
     expect(isNatural('1.2')).toBe(false)
   })
-});
+})
