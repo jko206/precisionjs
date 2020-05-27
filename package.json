@@ -19,7 +19,7 @@
   "homepage": "https://github.com/jaiko86/precisionjs#readme",
   "dependencies": {
     "@types/jest": "^25.2.3",
-    "@types/node": "12.7.4",
+    "@types/node": "^12.7.4",
     "global": "^4.4.0",
     "jest": "^24.9.0",
     "ts-jest": "^26.0.0",
