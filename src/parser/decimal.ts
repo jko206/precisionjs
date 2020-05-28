@@ -4,13 +4,13 @@ import getArnum from '../util/arnum'
 import isZero from '../bools/zero'
 import { ZERO } from '../constants'
 
-const format = (n) => {
+const format = (n: string) => {
   if (n[0] === '.') return `0${n}`
   else if (n[n.length - 1] === '.') return `${n}0`
   return n
 }
 
-export const terminatingDec = (n) => {
+export const terminatingDec = (n: string) => {
   n = stripZeros(n)
   if (isNatural(n)) return getArnum(n)
   if (isZero(n)) return ZERO
@@ -26,12 +26,13 @@ export const terminatingDec = (n) => {
 }
 
 // PRE: isRepeatingDec(n) is true
-export const repeatingDec = (n) => {
+export const repeatingDec = (n: string) => {
   // Split the input into terminating and repeating decimal parts
   const [front, back] = n.split('...')
 
   // count the number of decimal numbers in the terminating part
-  const termDec = front.match(/\.\d+$/)[0]
+  // TODO: handle cases when front.match() returns null
+  const termDec = (front.match(/\.\d+$/) || [])[0]
   const termDecDigitCount = termDec ? termDec.length - 1 : 0
 
   // count the number of repeating digits

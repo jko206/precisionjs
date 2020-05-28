@@ -1,8 +1,10 @@
+type arnum = number[]
+
 // arnum
 // a > b => 1
 // a === b => 0
 // a < b => -1
-export const compareArnum = (a, b) => {
+export const compareArnum = (a: arnum, b: arnum): -1 | 0 | 1 => {
   if (!a.length) return compareArnum([0], b)
   if (!b.length) return compareArnum(a, [0])
   if (a.length !== b.length) {

@@ -3,7 +3,7 @@ import { ARNUM_BASE } from '../constants'
 import arnum from './arnum'
 
 // 3 => ARNUM_BASE**3
-function getPowerOfArnumBase(exp) {
+function getPowerOfArnumBase(exp: number) {
   const maxArnumZeroCount = `${ARNUM_BASE}`.length - 1
   const zeros = '0'.repeat(maxArnumZeroCount)
 

@@ -1,5 +1,5 @@
 import { addArnums } from './add'
-import arnum from '../util/arnum.js'
+import arnum from '../util/arnum'
 
 describe('add.js', () => {
   it('adds arnums', () => {

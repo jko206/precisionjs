@@ -1,6 +1,6 @@
 import { ARNUM_BASE } from '../constants'
 
-export default function (str) {
+export default function (str: string) {
   const maxLength = `${ARNUM_BASE}`.length - 1
   let arr = []
   while (str.length > maxLength) {

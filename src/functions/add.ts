@@ -1,7 +1,9 @@
 // import multiply from './multiply'
 import { ARNUM_BASE } from '../constants'
 
-const carryToNextDigit = (arnum) => {
+type arnum = number[]
+
+const carryToNextDigit = (arnum: arnum) => {
   let toCarry = 0
   const processed = arnum.map((digit) => {
     const newDigit = digit + toCarry
@@ -16,7 +18,7 @@ const carryToNextDigit = (arnum) => {
 
 // testing
 
-export const addArnums = (...nums) =>
+export const addArnums = (...nums: arnum[]) =>
   // prettier adds comma after the [0], which adds red underline
   // to the closing parenthesis
   // prettier-ignore

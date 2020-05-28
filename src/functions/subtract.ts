@@ -1,8 +1,10 @@
 import { compareArnum } from './comparator'
 import { ARNUM_BASE } from '../constants'
 
+type arnum = number[]
+
 // PRE: minuend >= subtrahend
-export const subtractArnums = (minuend, subtrahend) => {
+export const subtractArnums = (minuend: arnum, subtrahend: arnum): arnum => {
   const comparison = compareArnum(minuend, subtrahend)
   if (comparison === 0) return [0]
   if (comparison === -1) throw new Error(`Minuend must be greater than or equal to subtrahend`)
@@ -13,8 +15,8 @@ export const subtractArnums = (minuend, subtrahend) => {
     if (carryToLastDigit) {
       diff[place - 1] += ARNUM_BASE
     }
-    const minuendDigit = minuend[place] + (carryToLastDigit ? -1 : 0)
-    const subtrahendDigit = subtrahend[place] || 0
+    const minuendDigit: number = minuend[place] + (carryToLastDigit ? -1 : 0)
+    const subtrahendDigit: number = subtrahend[place] || 0
     const differenceDigit = minuendDigit - subtrahendDigit
     carryToLastDigit = differenceDigit < 0
     diff[place] = differenceDigit

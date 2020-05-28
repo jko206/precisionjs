@@ -1,5 +1,5 @@
-import { addArnums } from '../functions/add'
-
+import { addArnums } from './add'
+type arnum = number[]
 /**
  * @param {a} obj An array of numbers, where each index has a 0 <= number < ARNUM_BASE
  * @param {b} obj An array of numbers, where each index has a 0 <= number < ARNUM_BASE
@@ -7,8 +7,8 @@ import { addArnums } from '../functions/add'
  *
  * ex: multiply([3,2,1], [0,1]) => [0, 3, 2, 1]
  */
-const multiplyTwoArnums = (a, b) => {
-  const products = []
+const multiplyTwoArnums = (a: arnum, b: arnum): arnum => {
+  const products: arnum[] = []
   a.forEach((n1, idx1) => {
     b.forEach((n2, idx2) => {
       const row = Array(idx1 + idx2).fill(0)
@@ -19,6 +19,6 @@ const multiplyTwoArnums = (a, b) => {
   return addArnums(...products)
 }
 
-export const multiplyArnums = (...nums) => nums.reduce(multiplyTwoArnums)
+export const multiplyArnums = (...nums: arnum[]) => nums.reduce(multiplyTwoArnums)
 
 export default multiplyArnums
