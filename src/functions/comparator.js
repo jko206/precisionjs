@@ -1,6 +1,10 @@
 // arnum
-// returns 1 if a > b, 0 if a == b, and -1 if a < b
+// a > b => 1
+// a === b => 0
+// a < b => -1
 export const compareArnum = (a, b) => {
+  if (!a.length) return compareArnum([0], b)
+  if (!b.length) return compareArnum(a, [0])
   if (a.length !== b.length) {
     return a.length > b.length ? 1 : -1
   }
