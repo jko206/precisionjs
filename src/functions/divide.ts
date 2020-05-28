@@ -43,7 +43,6 @@ export const double = (num: arnum) => {
     .map((n) => {
       const val = n + toCarry
       toCarry = Math.floor(val / ARNUM_BASE)
-      const newVal = val % ARNUM_BASE
 
       return val % ARNUM_BASE
     })
@@ -53,5 +52,19 @@ export const double = (num: arnum) => {
 }
 
 export const halve = (num: arnum) => {
-  return num.map((n) => n / 2).map((n) => {})
+  num = num
+    .map((n) => n / 2)
+    .reverse()
+    .map((n, i, arr) => {
+      const floored = Math.floor(n)
+      if (n !== floored) {
+        arr[i + 1] += ARNUM_BASE * 0.5
+        return floored
+      }
+      return n
+    })
+
+  while (!num[0]) num.shift()
+
+  return num.reverse()
 }

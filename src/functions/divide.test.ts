@@ -1,9 +1,78 @@
 import { arnum } from '../bools/types'
-import { divideArnums, double } from './divide'
+import { divideArnums, double, halve } from './divide'
 import { ARNUM_BASE } from '../constants'
 import { multiplyArnums } from './multiply'
 
-type testCaseInput = {
+type testCaseFormat = {
+  input: arnum
+  expected: arnum
+}
+const doubleTestCases: testCaseFormat[] = [
+  {
+    input: [1],
+    expected: [2],
+  },
+  {
+    input: [0, 1],
+    expected: [0, 2],
+  },
+  {
+    input: [ARNUM_BASE / 2],
+    expected: [0, 1],
+  },
+  {
+    input: [0, 0, 0, ARNUM_BASE / 2],
+    expected: [0, 0, 0, 0, 1],
+  },
+]
+
+describe('double arnums', () => {
+  doubleTestCases.forEach(({ input, expected }, index) => {
+    test(`Test #${index + 1}`, () => {
+      const output = double(input)
+      expect(output).toEqual(expected)
+    })
+  })
+})
+
+describe('double arnums, against multiplyArnums()', () => {
+  doubleTestCases.forEach(({ input }, index) => {
+    test(`Test #${index + 1}`, () => {
+      const output = double(input)
+      const output2 = multiplyArnums(input, [2])
+      expect(output).toEqual(output2)
+    })
+  })
+})
+
+const halveTestCases: testCaseFormat[] = [
+  {
+    input: [100],
+    expected: [50],
+  },
+  {
+    input: [0, 0, 0, 0, 100],
+    expected: [0, 0, 0, 0, 50],
+  },
+  {
+    input: [0, 1],
+    expected: [ARNUM_BASE / 2],
+  },
+  {
+    input: [0, ARNUM_BASE - 1],
+    expected: [ARNUM_BASE / 2, ARNUM_BASE / 2 - 1],
+  },
+]
+describe('halve arnums', () => {
+  halveTestCases.forEach(({ input, expected }, index) => {
+    test(`Test #${index + 1}`, () => {
+      const output = halve(input)
+      expect(output).toEqual(expected)
+    })
+  })
+})
+
+type testCaseFormat2 = {
   input: [arnum, arnum]
   expected: {
     quotient: arnum
@@ -11,7 +80,7 @@ type testCaseInput = {
   }
 }
 
-const testCases: testCaseInput[] = [
+const divideTestCases: testCaseFormat2[] = [
   {
     input: [[5], [5]],
     expected: {
@@ -71,53 +140,11 @@ const testCases: testCaseInput[] = [
   },
 ]
 
-describe('divide.ts', () => {
-  testCases.forEach((testCase, index) => {
+describe('divide arnums', () => {
+  divideTestCases.forEach((testCase, index) => {
     test(`Test #${index + 1}`, () => {
       const output = divideArnums(...testCase.input)
       expect(output).toEqual(testCase.expected)
-    })
-  })
-})
-
-type testCaseInput2 = {
-  input: arnum
-  expected: arnum
-}
-const testCases2: testCaseInput2[] = [
-  {
-    input: [1],
-    expected: [2],
-  },
-  {
-    input: [0, 1],
-    expected: [0, 2],
-  },
-  {
-    input: [ARNUM_BASE / 2],
-    expected: [0, 1],
-  },
-  {
-    input: [0, 0, 0, ARNUM_BASE / 2],
-    expected: [0, 0, 0, 0, 1],
-  },
-]
-
-describe('double arnums', () => {
-  testCases2.forEach(({ input, expected }, index) => {
-    test(`Test #${index + 1}`, () => {
-      const output = double(input)
-      expect(output).toEqual(expected)
-    })
-  })
-})
-
-describe('double arnums, against multiplyArnums()', () => {
-  testCases2.forEach(({ input }, index) => {
-    test(`Test #${index + 1}`, () => {
-      const output = double(input)
-      const output2 = multiplyArnums(input, [2])
-      expect(output).toEqual(output2)
     })
   })
 })
