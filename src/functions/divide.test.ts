@@ -2,93 +2,55 @@ import { arnum } from '../bools/types'
 import { divideArnums, double, halve } from './divide'
 import { ARNUM_BASE } from '../constants'
 import { multiplyArnums } from './multiply'
+import { checkIoMatch } from '../util/test-util'
 
-type testCaseFormat = {
-  input: arnum
-  expected: arnum
-}
-const doubleTestCases: testCaseFormat[] = [
+const doubleTestCases = [
   {
-    input: [1],
+    input: [[1]],
     expected: [2],
   },
   {
-    input: [0, 1],
+    input: [[0, 1]],
     expected: [0, 2],
   },
   {
-    input: [ARNUM_BASE / 2],
+    input: [[ARNUM_BASE / 2]],
     expected: [0, 1],
   },
   {
-    input: [0, 0, 0, ARNUM_BASE / 2],
+    input: [[0, 0, 0, ARNUM_BASE / 2]],
     expected: [0, 0, 0, 0, 1],
   },
 ]
 
-describe('double arnums', () => {
-  doubleTestCases.forEach(({ input, expected }, index) => {
-    test(`Test #${index + 1}`, () => {
-      const output = double(input)
-      expect(output).toEqual(expected)
-    })
-  })
-})
-
-describe('double arnums, against multiplyArnums()', () => {
-  doubleTestCases.forEach(({ input }, index) => {
-    test(`Test #${index + 1}`, () => {
-      const output = double(input)
-      const output2 = multiplyArnums(input, [2])
-      expect(output).toEqual(output2)
-    })
-  })
-})
-
-const halveTestCases: testCaseFormat[] = [
+const halveTestCases = [
   {
-    input: [100],
+    input: [[100]],
     expected: [50],
   },
   {
-    input: [0, 0, 0, 0, 100],
+    input: [[0, 0, 0, 0, 100]],
     expected: [0, 0, 0, 0, 50],
   },
   {
-    input: [0, 1],
+    input: [[0, 1]],
     expected: [ARNUM_BASE / 2],
   },
   {
-    input: [0, ARNUM_BASE - 1],
+    input: [[0, ARNUM_BASE - 1]],
     expected: [ARNUM_BASE / 2, ARNUM_BASE / 2 - 1],
   },
   {
-    input: [0],
+    input: [[0]],
     expected: [0],
   },
   {
-    input: [],
+    input: [[]],
     expected: [0],
   },
 ]
-describe('halve arnums', () => {
-  halveTestCases.forEach(({ input, expected }, index) => {
-    test(`Test #${index + 1}`, () => {
-      const output = halve(input)
-      expect(output).toEqual(expected)
-    })
-  })
-})
 
-type testCaseFormat2 = {
-  input: [arnum, arnum]
-  expected: {
-    quotient: arnum
-    remainder?: arnum
-  }
-}
-
-const divideTestCases: testCaseFormat2[] = [
+const divideTestCases = [
   {
     input: [[5], [5]],
     expected: {
@@ -167,11 +129,18 @@ const divideTestCases: testCaseFormat2[] = [
   },
 ]
 
-describe('divide arnums', () => {
-  divideTestCases.forEach((testCase, index) => {
-    test(`Test #${index + 1}`, () => {
-      const output = divideArnums(...testCase.input)
-      expect(output).toEqual(testCase.expected)
-    })
-  })
-})
+checkIoMatch(
+  'divide.ts',
+  [
+    doubleTestCases,
+    doubleTestCases.map((tc) => ({ input: tc.input, expected: multiplyArnums(...tc.input, [2]) })),
+    halveTestCases,
+    divideTestCases,
+  ],
+  [
+    { description: 'double', fn: double },
+    { description: 'double: against multiplyArnums()', fn: double },
+    { description: 'halve', fn: halve },
+    { description: 'divideArnums', fn: divideArnums },
+  ],
+)

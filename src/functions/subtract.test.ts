@@ -1,33 +1,29 @@
 import { subtractArnums } from './subtract'
 import { ARNUM_BASE } from '../constants'
+import { checkIoMatch } from '../util/test-util'
 
-describe('subtractArnums', () => {
-  test('subtracts arnums', () => {
-    let result = subtractArnums([5], [1])
-    expect(result).toEqual([4])
+const testCases = [
+  { input: [[5], [1]], expected: [4] },
+  { input: [[1000], [900]], expected: [100] },
+  { input: [[20], [0]], expected: [20] },
+  { input: [[20], []], expected: [20] },
+  { input: [[0, 1], [1]], expected: [ARNUM_BASE - 1] },
+  { input: [[0, 0, 0, 1], [1]], expected: [ARNUM_BASE - 1, ARNUM_BASE - 1, ARNUM_BASE - 1] },
+  { input: [[1], [1]], expected: [0] },
+  {
+    input: [
+      [0, 0, 0, 1],
+      [0, 0, 0, 1],
+    ],
+    expected: [0],
+  },
+  {
+    input: [
+      [1, 1, 1, 1],
+      [1, 1, 1, 1],
+    ],
+    expected: [0],
+  },
+]
 
-    result = subtractArnums([1000], [900])
-    expect(result).toEqual([100])
-
-    result = subtractArnums([20], [0])
-    expect(result).toEqual([20])
-
-    result = subtractArnums([20], [])
-    expect(result).toEqual([20])
-
-    result = subtractArnums([0, 1], [1])
-    expect(result).toEqual([ARNUM_BASE - 1])
-
-    result = subtractArnums([0, 0, 0, 1], [1])
-    expect(result).toEqual([ARNUM_BASE - 1, ARNUM_BASE - 1, ARNUM_BASE - 1])
-
-    result = subtractArnums([1], [1])
-    expect(result).toEqual([0])
-
-    result = subtractArnums([0, 0, 0, 1], [0, 0, 0, 1])
-    expect(result).toEqual([0])
-
-    result = subtractArnums([1, 1, 1, 1], [1, 1, 1, 1])
-    expect(result).toEqual([0])
-  })
-})
+checkIoMatch('subtract.ts', [testCases], [{ description: 'subtractArnums', fn: subtractArnums }])
