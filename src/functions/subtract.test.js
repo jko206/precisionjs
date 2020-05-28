@@ -12,6 +12,9 @@ describe('subtractArnums', () => {
     result = subtractArnums([20], [0])
     expect(result).toEqual([20])
 
+    result = subtractArnums([20], [])
+    expect(result).toEqual([20])
+
     result = subtractArnums([0, 1], [1])
     expect(result).toEqual([ARNUM_BASE - 1])
 

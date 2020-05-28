@@ -26,5 +26,5 @@ export const subtractArnums = (minuend, subtrahend) => {
     diff.pop()
   }
 
-  return diff
+  return diff.length ? diff : [0]
 }
