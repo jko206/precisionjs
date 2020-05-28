@@ -7,4 +7,5 @@ module.exports = {
   testRegex: '.*.test.(js|tsx|ts)$',
   moduleDirectories: ['./node_modules'],
   runner: 'jest-serial-runner',
+  verbose: true,
 }
