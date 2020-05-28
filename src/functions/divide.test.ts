@@ -62,6 +62,14 @@ const halveTestCases: testCaseFormat[] = [
     input: [0, ARNUM_BASE - 1],
     expected: [ARNUM_BASE / 2, ARNUM_BASE / 2 - 1],
   },
+  {
+    input: [0],
+    expected: [0],
+  },
+  {
+    input: [],
+    expected: [0],
+  },
 ]
 describe('halve arnums', () => {
   halveTestCases.forEach(({ input, expected }, index) => {
@@ -126,16 +134,35 @@ const divideTestCases: testCaseFormat2[] = [
       remainder: [1],
     },
   },
-  // {
-  //   input: [[0, 20000], [5]],
-  //   expected: {
-  //     quotient: [0, 4000],
-  //   },
-  // },
+  {
+    input: [[0, 20000], [5]],
+    expected: {
+      quotient: [0, 4000],
+    },
+  },
+  {
+    input: [[0, 0, 0, 0, 20000], [5]],
+    expected: {
+      quotient: [0, 0, 0, 0, 4000],
+    },
+  },
   {
     input: [[1024], [2]],
     expected: {
       quotient: [512],
+    },
+  },
+  {
+    input: [[1024 ** 2], [2]],
+    expected: {
+      quotient: [512 * 1024],
+    },
+  },
+  {
+    input: [[1024 ** 2 + 1], [2]],
+    expected: {
+      quotient: [512 * 1024],
+      remainder: [1],
     },
   },
 ]
