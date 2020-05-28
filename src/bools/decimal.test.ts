@@ -1,24 +1,30 @@
 import { isTerminatingDec, isRepeatingDec } from './decimal'
+import { checkIoMatch } from '../util/test-util'
 
-describe('isDecimal', () => {
-  it('correctly identifies valid decimal', () => {
-    expect(isTerminatingDec('0.001')).toBe(true)
-    expect(isTerminatingDec('1.001')).toBe(true)
-    expect(isTerminatingDec('1234.001')).toBe(true)
-    expect(isTerminatingDec('1234.0')).toBe(true)
-    expect(isTerminatingDec('.12345')).toBe(true)
+const decTestCases = [
+  { input: '0.001', expected: true },
+  { input: '1.001', expected: true },
+  { input: '1234.001', expected: true },
+  { input: '1234.0', expected: true },
+  { input: '.12345', expected: true },
+  { input: '01234.0', expected: false },
+]
 
-    expect(isTerminatingDec('01234.0')).toBe(false)
-  })
+const repDecTestCases = [
+  { input: '1234...3', expected: true },
+  { input: '1234...3333', expected: true },
+  { input: '0...3333', expected: true },
+  { input: '0.123...3333', expected: true },
+  { input: '0.123...333', expected: true },
+  { input: '0.123...', expected: false },
+  { input: '...123', expected: false },
+]
 
-  it('correctly identifies repeating decimals', () => {
-    expect(isRepeatingDec('1234...3')).toBe(true)
-    expect(isRepeatingDec('1234...3333')).toBe(true)
-    expect(isRepeatingDec('0...3333')).toBe(true)
-    expect(isRepeatingDec('0.123...3333')).toBe(true)
-    expect(isRepeatingDec('0.123...333')).toBe(true)
-
-    expect(isRepeatingDec('0.123...')).toBe(false)
-    expect(isRepeatingDec('...123')).toBe(false)
-  })
-})
+checkIoMatch(
+  'decimal.ts',
+  [decTestCases, repDecTestCases],
+  [
+    { description: 'isTerminatingDec', fn: isTerminatingDec },
+    { description: 'isRepeatingDec', fn: isRepeatingDec },
+  ],
+)

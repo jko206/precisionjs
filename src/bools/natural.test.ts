@@ -1,16 +1,17 @@
 import isNatural from './natural'
+import { checkIoMatch } from '../util/test-util'
+const naturalCases = [
+  { input: '002', expected: true },
+  { input: '1234567890123456789012345678901234567890', expected: true },
+  { input: '12345', expected: true },
+  { input: '1', expected: true },
+  { input: '1.', expected: true },
+  { input: '1.0', expected: true },
+  { input: '1.00000000000000', expected: true },
+  { input: '0', expected: false },
+  { input: '000', expected: false },
+  { input: '1.2', expected: false },
+  { input: '0.2', expected: false },
+]
 
-describe('natural.js', () => {
-  it('correctly identifies valid natural', () => {
-    expect(isNatural('1234567890123456789012345678901234567890')).toBe(true)
-    expect(isNatural('12345')).toBe(true)
-    expect(isNatural('1')).toBe(true)
-    expect(isNatural('1.')).toBe(true)
-    expect(isNatural('1.0')).toBe(true)
-    expect(isNatural('1.00000000000000')).toBe(true)
-
-    expect(isNatural('0')).toBe(false)
-    expect(isNatural('000')).toBe(false)
-    expect(isNatural('1.2')).toBe(false)
-  })
-})
+checkIoMatch('natural.ts', [naturalCases], [{ description: 'isNatural', fn: isNatural }])

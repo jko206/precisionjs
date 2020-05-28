@@ -1,29 +1,28 @@
 import isZero from './zero'
+import { checkIoMatch } from '../util/test-util'
 
-describe('isDecimal', () => {
-  it('correctly identifies valid zero', () => {
-    expect(isZero(0)).toBe(true)
-    expect(isZero('0.')).toBe(true)
-    expect(isZero('.0')).toBe(true)
-    expect(isZero('.0000')).toBe(true)
-    expect(isZero('0.000')).toBe(true)
-    expect(isZero('000.000')).toBe(true)
-    expect(isZero('00000')).toBe(true)
+const cases = [
+  { input: 0, expected: true },
+  { input: '0.', expected: true },
+  { input: '.0', expected: true },
+  { input: '.0000', expected: true },
+  { input: '0.000', expected: true },
+  { input: '000.000', expected: true },
+  { input: '00000', expected: true },
+  { input: -0, expected: true },
+  { input: '-0.', expected: true },
+  { input: '-.0', expected: true },
+  { input: '-.0000', expected: true },
+  { input: '-0.000', expected: true },
+  { input: '-000.000', expected: true },
+  { input: '-00000', expected: true },
+  { input: '.', expected: false },
+  { input: '-.', expected: false },
+  { input: '-', expected: false },
+  { input: '0.1', expected: false },
+  { input: '0.1234567', expected: false },
+  { input: '1', expected: false },
+  { input: '1234567', expected: false },
+]
 
-    expect(isZero(-0)).toBe(true)
-    expect(isZero('-0.')).toBe(true)
-    expect(isZero('-.0')).toBe(true)
-    expect(isZero('-.0000')).toBe(true)
-    expect(isZero('-0.000')).toBe(true)
-    expect(isZero('-000.000')).toBe(true)
-    expect(isZero('-00000')).toBe(true)
-
-    expect(isZero('.')).toBe(false)
-    expect(isZero('-.')).toBe(false)
-    expect(isZero('-')).toBe(false)
-    expect(isZero('0.1')).toBe(false)
-    expect(isZero('0.1234567')).toBe(false)
-    expect(isZero('1')).toBe(false)
-    expect(isZero('1234567')).toBe(false)
-  })
-})
+checkIoMatch('zero.ts', [cases], [{ description: 'isZero', fn: isZero }])

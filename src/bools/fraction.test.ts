@@ -1,53 +1,57 @@
 import isFraction from './fraction'
+import { checkIoMatch } from '../util/test-util'
 
-describe('isFraction', () => {
-  it('correctly identifies valid fraction', () => {
-    expect(isFraction('2/3')).toBe(true)
-    expect(isFraction('0/3')).toBe(true)
-    expect(isFraction('0/123')).toBe(true)
-    expect(isFraction('123456789/3')).toBe(true)
-    expect(isFraction('123456789/1')).toBe(true)
+const fracCases = [
+  { input: '2/3', expected: true },
+  { input: '0/3', expected: true },
+  { input: '0/123', expected: true },
+  { input: '123456789/3', expected: true },
+  { input: '123456789/1', expected: true },
+  { input: '1/0', expected: false },
+  { input: '12345/0', expected: false },
+  { input: '1/', expected: false },
+  { input: '123/', expected: false },
+  { input: '/123', expected: false },
+  { input: '/1', expected: false },
+  { input: '1.23/2', expected: false },
+  { input: '1/2.345', expected: false },
+]
 
-    expect(isFraction('1/0')).toBe(false)
-    expect(isFraction('12345/0')).toBe(false)
-    expect(isFraction('1/')).toBe(false)
-    expect(isFraction('123/')).toBe(false)
-    expect(isFraction('/123')).toBe(false)
-    expect(isFraction('/1')).toBe(false)
-    expect(isFraction('1.23/2')).toBe(false)
-    expect(isFraction('1/2.345')).toBe(false)
-  })
+const mixedNumCases = [
+  { input: '99 2/3', expected: true },
+  { input: '99 2/3', expected: true },
+  { input: '99 0/3', expected: true },
+  { input: '99 0/123', expected: true },
+  { input: '99 123456789/3', expected: true },
+  { input: '99 123456789/1', expected: true },
+  { input: '0 2/3', expected: true },
+  { input: '0 0/3', expected: true },
+  { input: '0 0/123', expected: true },
+  { input: '0 123456789/3', expected: true },
+  { input: '0 123456789/1', expected: true },
+  { input: '1 1/0', expected: false },
+  { input: '1 12345/0', expected: false },
+  { input: '1 1/', expected: false },
+  { input: '1 123/', expected: false },
+  { input: '1 /123', expected: false },
+  { input: '1 /1', expected: false },
+  { input: '1 1.23/2', expected: false },
+  { input: '1 1/2.345', expected: false },
+  { input: '1.24 1/0', expected: false },
+  { input: '1.24 12345/0', expected: false },
+  { input: '1.24 1/', expected: false },
+  { input: '1.24 123/', expected: false },
+  { input: '1.24 /123', expected: false },
+  { input: '1.24 /1', expected: false },
+  { input: '1.24 1.23/2', expected: false },
+  { input: '1.24 1/2.345', expected: false },
+]
 
-  it('correctly identifies valid mixed numbers', () => {
-    expect(isFraction('99 2/3')).toBe(true)
-    expect(isFraction('99 2/3')).toBe(true)
-    expect(isFraction('99 0/3')).toBe(true)
-    expect(isFraction('99 0/123')).toBe(true)
-    expect(isFraction('99 123456789/3')).toBe(true)
-    expect(isFraction('99 123456789/1')).toBe(true)
-
-    expect(isFraction('0 2/3')).toBe(true)
-    expect(isFraction('0 0/3')).toBe(true)
-    expect(isFraction('0 0/123')).toBe(true)
-    expect(isFraction('0 123456789/3')).toBe(true)
-    expect(isFraction('0 123456789/1')).toBe(true)
-
-    expect(isFraction('1 1/0')).toBe(false)
-    expect(isFraction('1 12345/0')).toBe(false)
-    expect(isFraction('1 1/')).toBe(false)
-    expect(isFraction('1 123/')).toBe(false)
-    expect(isFraction('1 /123')).toBe(false)
-    expect(isFraction('1 /1')).toBe(false)
-    expect(isFraction('1 1.23/2')).toBe(false)
-    expect(isFraction('1 1/2.345')).toBe(false)
-
-    expect(isFraction('1.24 1/0')).toBe(false)
-    expect(isFraction('1.24 12345/0')).toBe(false)
-    expect(isFraction('1.24 1/')).toBe(false)
-    expect(isFraction('1.24 123/')).toBe(false)
-    expect(isFraction('1.24 /123')).toBe(false)
-    expect(isFraction('1.24 /1')).toBe(false)
-    expect(isFraction('1.24 1.23/2')).toBe(false)
-    expect(isFraction('1.24 1/2.345')).toBe(false)
-  })
-})
+checkIoMatch(
+  'fraction.ts',
+  [fracCases, mixedNumCases],
+  [
+    { description: 'isFraction: regular fractions', fn: isFraction },
+    { description: 'isFraction: mixed numbers', fn: isFraction },
+  ],
+)
