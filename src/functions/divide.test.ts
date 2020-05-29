@@ -1,4 +1,4 @@
-import { arnum } from '../bools/types'
+import { arnum } from '../bools/ducks'
 import { divideArnums, double, halve } from './divide'
 import { ARNUM_BASE } from '../constants/index'
 import { multiplyArnums } from './multiply'

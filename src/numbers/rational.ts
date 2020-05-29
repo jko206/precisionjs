@@ -1,4 +1,4 @@
-import { stringOption } from './types'
+import { stringOption } from './ducks'
 import Arnum from './arnum/index'
 
 interface IRationalNumber {

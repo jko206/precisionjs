@@ -1,4 +1,4 @@
-import { arnum } from '../bools/types'
+import { arnum } from '../bools/ducks'
 import { compareArnum } from './comparator'
 import { multiplyArnums } from './multiply'
 import { subtractArnums } from './subtract'
