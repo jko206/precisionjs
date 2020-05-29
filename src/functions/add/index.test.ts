@@ -1,6 +1,6 @@
-import { addArnums } from './add'
-import arnum from '../numbers/arnum/arnum'
-import { checkIoMatch } from '../util/test-util'
+import { addArnums } from './index'
+import arnum from '../../numbers/arnum/arnum'
+import { checkIoMatch } from '../../util/test-util'
 
 const a = arnum('375801024789183707523620150398520054526152638173950')
 const b = arnum('93508461094916940576949955528076561541008302772795')

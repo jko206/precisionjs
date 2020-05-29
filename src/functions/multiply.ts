@@ -1,4 +1,4 @@
-import { addArnums } from './add'
+import { addArnums } from './add/index'
 type arnum = number[]
 /**
  * @param {a} obj An array of numbers, where each index has a 0 <= number < ARNUM_BASE
