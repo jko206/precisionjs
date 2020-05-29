@@ -1,5 +1,5 @@
 import multiplyArnums from './multiply'
-import arnum from '../util/arnum'
+import arnum from '../numbers/arnum/arnum'
 import { checkIoMatch } from '../util/test-util'
 
 const n1 = arnum('2000000600000100000006')

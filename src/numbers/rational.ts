@@ -1,5 +1,5 @@
 import { stringOption } from './types'
-import Arnum from './arnum'
+import Arnum from './arnum/index'
 
 interface IRationalNumber {
   numer: Arnum
