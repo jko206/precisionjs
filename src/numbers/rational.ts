@@ -10,9 +10,9 @@ interface IRationalNumber {
   clone: () => RationalNumber
 
   // isRepeatingDecimal: () => boolean
-  // isInteger: () => boolean
-  // isNatural: () => boolean
-  // isZero: () => boolean
+  isInteger: () => boolean
+  isNatural: () => boolean
+  isZero: () => boolean
 }
 
 class RationalNumber implements IRationalNumber {
@@ -21,16 +21,22 @@ class RationalNumber implements IRationalNumber {
   positivity: -1 | 0 | 1
 
   constructor(n: number | string | RationalNumber) {
-    this.numer = new Arnum(3)
-    this.denom = new Arnum(3)
-    this.positivity = 1
+    if (n instanceof RationalNumber) {
+      this.numer = n.numer
+      this.denom = n.denom
+      this.positivity = n.positivity
+    } else {
+      this.numer = new Arnum(3)
+      this.denom = new Arnum(3)
+      this.positivity = 1
+    }
   }
 
   valueOf() {
-    return 1
+    return this.numer.valueOf() / this.denom.valueOf()
   }
   toString(options?: stringOption) {
-    return ''
+    return `${this.numer}/${this.denom}`
   }
   clone() {
     return new RationalNumber(this)
@@ -39,15 +45,16 @@ class RationalNumber implements IRationalNumber {
   // isRepeatingDecimal() {
   //   return true
   // }
-  // isInteger() {
-  //   return true
-  // }
-  // isNatural() {
-  //   return true
-  // }
-  // isZero() {
-  //   return true
-  // }
+  isInteger() {
+    const denom = this.denom.digits
+    return denom.length === 1 && denom[0] === 1
+  }
+  isNatural() {
+    return this.positivity === 1 && this.isInteger()
+  }
+  isZero() {
+    return this.positivity === 0
+  }
 }
 
 export default RationalNumber
