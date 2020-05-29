@@ -1,5 +1,5 @@
 import { compareArnum } from './comparator'
-import { ARNUM_BASE } from '../constants'
+import { ARNUM_BASE } from '../constants/index'
 
 type arnum = number[]
 

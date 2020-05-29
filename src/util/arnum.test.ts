@@ -1,5 +1,5 @@
 import getArnum from './arnum'
-import { ARNUM_BASE } from '../constants'
+import { ARNUM_BASE } from '../constants/index'
 import arnum from './arnum'
 
 // 3 => ARNUM_BASE**3

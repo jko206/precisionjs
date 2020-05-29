@@ -2,7 +2,7 @@ import { stripZeros } from '../util/misc'
 import isNatural from '../bools/natural'
 import getArnum from '../util/arnum'
 import isZero from '../bools/zero'
-import { ZERO } from '../constants'
+import { ZERO } from '../constants/index'
 
 const format = (n: string) => {
   if (n[0] === '.') return `0${n}`

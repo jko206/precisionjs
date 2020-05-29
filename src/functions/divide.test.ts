@@ -1,6 +1,6 @@
 import { arnum } from '../bools/types'
 import { divideArnums, double, halve } from './divide'
-import { ARNUM_BASE } from '../constants'
+import { ARNUM_BASE } from '../constants/index'
 import { multiplyArnums } from './multiply'
 import { checkIoMatch } from '../util/test-util'
 

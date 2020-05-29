@@ -1,4 +1,4 @@
-import { ARNUM_BASE } from '../constants'
+import { ARNUM_BASE } from '../constants/index'
 
 export default function (str: string) {
   const maxLength = `${ARNUM_BASE}`.length - 1

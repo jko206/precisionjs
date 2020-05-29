@@ -3,7 +3,7 @@ import { compareArnum } from './comparator'
 import { multiplyArnums } from './multiply'
 import { subtractArnums } from './subtract'
 import { addArnums } from './add'
-import { ARNUM_BASE } from '../constants'
+import { ARNUM_BASE } from '../constants/index'
 
 const isZero = (num: arnum) => !num.length || (num.length === 1 && num[0] === 0)
 

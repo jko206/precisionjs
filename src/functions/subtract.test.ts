@@ -1,5 +1,5 @@
 import { subtractArnums } from './subtract'
-import { ARNUM_BASE } from '../constants'
+import { ARNUM_BASE } from '../constants/index'
 import { checkIoMatch } from '../util/test-util'
 
 const testCases = [
