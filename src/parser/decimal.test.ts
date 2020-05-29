@@ -83,5 +83,18 @@ describe('decimal.js', () => {
         denominator: [10000],
       },
     })
+    // TOOD: fix this case
+    // returns {rep: {n: [9], d: [9]}} <-- this should be 1
+    // result = repeatingDec('0...9')
+    // expect(result).toEqual({
+    //   repDecArnum: {
+    //     numerator: [0],
+    //     denominator: [1],
+    //   },
+    //   termDecArnum: {
+    //     numerator: [1],
+    //     denominator: [1],
+    //   },
+    // })
   })
 })
