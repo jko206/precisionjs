@@ -21,8 +21,8 @@ class Arnum implements IArnum {
 
   toString(options?: stringOption) {
     return this.digits
-      .map((n, index) => (index ? `${n}`.padStart(LOG_10_ARNUM_BASE, '0') : `${n}`))
       .reverse()
+      .map((n, index) => (index ? `${n}`.padStart(LOG_10_ARNUM_BASE, '0') : `${n}`))
       .join('')
   }
 
