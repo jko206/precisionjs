@@ -22,8 +22,8 @@ class RationalNumber implements IRationalNumber {
 
   constructor(n: number | string | RationalNumber) {
     if (n instanceof RationalNumber) {
-      this.numer = n.numer
-      this.denom = n.denom
+      this.numer = new Arnum(n.numer)
+      this.denom = new Arnum(n.denom)
       this.positivity = n.positivity
     } else {
       this.numer = new Arnum(3)

@@ -13,7 +13,7 @@ class Arnum implements IArnum {
 
   constructor(n: number | string | Arnum) {
     if (n instanceof Arnum) {
-      this.digits = n.digits
+      this.digits = [...n.digits]
     } else {
       this.digits = constructorHelper(`${n}`)
     }
