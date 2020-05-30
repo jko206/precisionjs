@@ -2,7 +2,7 @@ import { arnum } from '../static/ducks'
 import { compareArnum } from './comparator'
 import { multiplyArnums } from './multiply'
 import { subtractArnums } from './subtract'
-import { addArnums } from './add/index'
+import { addArnums } from './add'
 import { ARNUM_BASE } from '../static/constants'
 
 const isZero = (num: arnum) => !num.length || (num.length === 1 && num[0] === 0)

@@ -1,5 +1,5 @@
 import { arnum } from '../static/ducks'
-import { addArnums } from './add/index'
+import { addArnums } from './add'
 
 /**
  * @param {a} obj An array of numbers, where each index has a 0 <= number < ARNUM_BASE

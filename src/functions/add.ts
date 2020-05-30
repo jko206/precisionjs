@@ -1,8 +1,8 @@
 // import multiply from './multiply'
-import { ARNUM_BASE } from '../../static/constants'
-import { validArgs, arnum } from '../../static/ducks'
-import RN from '../../numbers/rational'
-import multiplyArnums from '../multiply'
+import { ARNUM_BASE } from '../static/constants'
+import { validArgs, arnum } from '../static/ducks'
+import RN from '../numbers/rational'
+import multiplyArnums from './multiply'
 
 const carryToNextDigit = (arnum: arnum) => {
   let toCarry = 0
