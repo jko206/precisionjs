@@ -1,6 +1,6 @@
 import { ARNUM_BASE } from '../../constants/index'
 import { checkIoMatch } from '../../util/test-util'
-import Arnum from './index'
+import Natural from './index'
 
 // 3 => ARNUM_BASE**3
 function getPowerOfArnumBase(exp: number) {
@@ -40,12 +40,12 @@ const testCases = [
 ]
 
 const getNewArnum = (input: string) => {
-  let result = new Arnum(input)
+  let result = new Natural(input)
   return result.digits
 }
 
 const getArnumToString = (input: string) => {
-  let result = new Arnum(input)
+  let result = new Natural(input)
   return result.toString()
 }
 
@@ -53,9 +53,9 @@ checkIoMatch(
   'arnum.ts',
   [testCases, testCases.map(({ input }) => ({ input, expected: input[0] }))],
   [
-    { description: 'new Arnum', fn: getNewArnum },
+    { description: 'new Natural', fn: getNewArnum },
     {
-      description: 'new Arnum:toString',
+      description: 'new Natural:toString',
       fn: getArnumToString,
     },
   ],

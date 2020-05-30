@@ -1,9 +1,9 @@
 import { stringOption, validArgs } from '../ducks'
-import Arnum from './arnum/index'
+import Natural from './natural/index'
 
 interface IRationalNumber {
-  numer: Arnum
-  denom: Arnum
+  numer: Natural
+  denom: Natural
   positivity: -1 | 0 | 1
   valueOf: () => number
   toString: (arg?: stringOption) => string
@@ -16,22 +16,22 @@ interface IRationalNumber {
 }
 
 class RationalNumber implements IRationalNumber {
-  numer: Arnum
-  denom: Arnum
+  numer: Natural
+  denom: Natural
   positivity: -1 | 0 | 1
 
   constructor(n: validArgs) {
     if (n instanceof RationalNumber) {
-      this.numer = new Arnum(n.numer)
-      this.denom = new Arnum(n.denom)
+      this.numer = new Natural(n.numer)
+      this.denom = new Natural(n.denom)
       this.positivity = n.positivity
-    } else if (n instanceof Arnum) {
-      this.numer = new Arnum(n)
-      this.denom = new Arnum(1)
+    } else if (n instanceof Natural) {
+      this.numer = new Natural(n)
+      this.denom = new Natural(1)
       this.positivity = n.isZero() ? 0 : 1
     } else {
-      this.numer = new Arnum(3)
-      this.denom = new Arnum(3)
+      this.numer = new Natural(3)
+      this.denom = new Natural(3)
       this.positivity = 1
     }
   }

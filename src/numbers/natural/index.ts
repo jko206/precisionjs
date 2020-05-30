@@ -12,11 +12,11 @@ interface IArnum {
 const isNumber = (n: any) => typeof n === 'number'
 const isString = (n: any) => typeof n === 'string'
 
-class Arnum implements IArnum {
+class Natural implements IArnum {
   digits: number[]
 
-  constructor(n: number | string | Arnum | number[]) {
-    if (n instanceof Arnum) {
+  constructor(n: number | string | Natural | number[]) {
+    if (n instanceof Natural) {
       this.digits = [...n.digits]
     } else if (isArray(n) && n.every((digit) => isNumber(digit) && digit < ARNUM_BASE)) {
       this.digits = [...n]
@@ -39,7 +39,7 @@ class Arnum implements IArnum {
   }
 
   clone() {
-    return new Arnum(this)
+    return new Natural(this)
   }
 
   isZero() {
@@ -48,4 +48,4 @@ class Arnum implements IArnum {
   }
 }
 
-export default Arnum
+export default Natural
