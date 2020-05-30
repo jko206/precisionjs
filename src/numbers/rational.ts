@@ -1,5 +1,5 @@
 import { stringOption, validArgs } from '../ducks'
-import Natural from './natural/index'
+import Natural from './natural'
 
 interface IRationalNumber {
   numer: Natural

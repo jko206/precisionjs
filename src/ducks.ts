@@ -1,5 +1,5 @@
 import RationalNumber from './numbers/rational'
-import Natural from './numbers/natural/index'
+import Natural from './numbers/natural'
 
 export type stringOption = {
   form: 'decimal' | 'fraction' | 'mixedNumber' | 'scientific'
