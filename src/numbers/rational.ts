@@ -30,9 +30,6 @@ class RationalNumber implements IRationalNumber {
     return `${this.numer}/${this.denom}`
   }
 
-  // isRepeatingDecimal() {
-  //   return true
-  // }
   isInteger() {
     const denom = this.denom.digits
     return denom.length === 1 && denom[0] === 1
