@@ -1,6 +1,6 @@
 // import multiply from './multiply'
-import { ARNUM_BASE } from '../../constants/index'
-import { validArgs, arnum } from '../../ducks'
+import { ARNUM_BASE } from '../../static/constants'
+import { validArgs, arnum } from '../../static/ducks'
 import RN from '../../numbers/rational'
 import multiplyArnums from '../multiply'
 

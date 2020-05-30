@@ -1,5 +1,5 @@
 import parseInteger from './integer'
-import { ARNUM_BASE } from '../constants/index'
+import { ARNUM_BASE } from '../static/constants'
 
 describe('integer.js', () => {
   it('parses integer to realNum', () => {

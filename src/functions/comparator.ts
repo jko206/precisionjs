@@ -1,4 +1,4 @@
-import { arnum } from '../ducks'
+import { arnum } from '../static/ducks'
 
 // a > b => 1
 // a === b => 0

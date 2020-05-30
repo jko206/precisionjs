@@ -1,5 +1,5 @@
-import { LOG_10_ARNUM_BASE, ARNUM_BASE } from '../constants/index'
-import { stringOption } from '../ducks'
+import { LOG_10_ARNUM_BASE, ARNUM_BASE } from '../static/constants'
+import { stringOption } from '../static/ducks'
 import constructorHelper from './arnum'
 import { isArray } from 'util'
 interface IArnum {

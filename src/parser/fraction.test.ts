@@ -1,4 +1,4 @@
-import { ARNUM_BASE } from '../constants/index'
+import { ARNUM_BASE } from '../static/constants'
 import { terminatingDec, repeatingDec } from './decimal'
 
 describe('decimal.js', () => {

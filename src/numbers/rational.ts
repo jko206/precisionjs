@@ -1,4 +1,4 @@
-import { stringOption, validArgs } from '../ducks'
+import { stringOption, validArgs } from '../static/ducks'
 import Natural from './natural'
 
 interface IRationalNumber {

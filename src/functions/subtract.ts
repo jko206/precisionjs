@@ -1,6 +1,6 @@
 import { compareArnum } from './comparator'
-import { ARNUM_BASE } from '../constants/index'
-import { arnum } from '../ducks'
+import { ARNUM_BASE } from '../static/constants'
+import { arnum } from '../static/ducks'
 
 // PRE: minuend >= subtrahend
 export const subtractArnums = (minuend: arnum, subtrahend: arnum): arnum => {

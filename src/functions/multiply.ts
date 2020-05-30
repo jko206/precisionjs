@@ -1,4 +1,4 @@
-import { arnum } from '../ducks'
+import { arnum } from '../static/ducks'
 import { addArnums } from './add/index'
 
 /**

@@ -1,5 +1,5 @@
-import { LOG_10_ARNUM_BASE } from '../constants/index'
-import { arnum } from '../ducks'
+import { LOG_10_ARNUM_BASE } from '../static/constants'
+import { arnum } from '../static/ducks'
 
 function getArnum(str: string): arnum {
   let arr = []
