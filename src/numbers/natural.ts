@@ -2,17 +2,12 @@ import { LOG_10_ARNUM_BASE, ARNUM_BASE } from '../static/constants'
 import { stringOption } from '../static/ducks'
 import constructorHelper from './arnum'
 import { isArray } from 'util'
-interface IArnum {
-  digits: number[]
-  valueOf: () => number
-  toString: (options: stringOption) => string
-  clone: () => IArnum
-}
+import { INatural } from '../static/interfaces'
 
 const isNumber = (n: any) => typeof n === 'number'
 const isString = (n: any) => typeof n === 'string'
 
-class Natural implements IArnum {
+class Natural implements INatural {
   digits: number[]
 
   constructor(n: number | string | Natural | number[]) {
@@ -36,15 +31,6 @@ class Natural implements IArnum {
 
   valueOf() {
     return parseInt(this.toString())
-  }
-
-  clone() {
-    return new Natural(this)
-  }
-
-  isZero() {
-    const { digits } = this
-    return digits.length === 0 || (digits.length === 1 && !digits[0])
   }
 }
 

@@ -1,19 +1,6 @@
 import { stringOption, validArgs } from '../static/ducks'
 import Natural from './natural'
-
-interface IRationalNumber {
-  numer: Natural
-  denom: Natural
-  positivity: -1 | 0 | 1
-  valueOf: () => number
-  toString: (arg?: stringOption) => string
-  clone: () => RationalNumber
-
-  // isRepeatingDecimal: () => boolean
-  isInteger: () => boolean
-  isNatural: () => boolean
-  isZero: () => boolean
-}
+import { IRationalNumber } from '../static/interfaces'
 
 class RationalNumber implements IRationalNumber {
   numer: Natural
@@ -28,7 +15,7 @@ class RationalNumber implements IRationalNumber {
     } else if (n instanceof Natural) {
       this.numer = new Natural(n)
       this.denom = new Natural(1)
-      this.positivity = n.isZero() ? 0 : 1
+      this.positivity = 1
     } else {
       this.numer = new Natural(3)
       this.denom = new Natural(3)
@@ -41,9 +28,6 @@ class RationalNumber implements IRationalNumber {
   }
   toString(options?: stringOption) {
     return `${this.numer}/${this.denom}`
-  }
-  clone() {
-    return new RationalNumber(this)
   }
 
   // isRepeatingDecimal() {
