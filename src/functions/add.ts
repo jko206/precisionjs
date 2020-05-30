@@ -4,7 +4,7 @@ import { validArgs, arnum } from '../static/ducks'
 import RN from '../numbers/rational'
 import multiplyArnums from './multiply'
 
-const carryToNextDigit = (arnum: arnum) => {
+const carryToNextDigit = (arnum: arnum): arnum => {
   let toCarry = 0
   const processed = arnum.map((digit) => {
     const newDigit = digit + toCarry
@@ -17,7 +17,9 @@ const carryToNextDigit = (arnum: arnum) => {
   return processed
 }
 
-export const addTwoArnums = (a: arnum, b: arnum) => {
+export const addTwoArnums = (a: arnum, b: arnum): arnum => {
+  a = [...a]
+  b = [...b]
   let total = []
   let carry = false
   while (a.length || b.length) {
@@ -31,7 +33,7 @@ export const addTwoArnums = (a: arnum, b: arnum) => {
   return carry ? carryToNextDigit(total) : total
 }
 
-export const addArnums = (...nums: arnum[]) => nums.reduce(addTwoArnums, [0])
+export const addArnums = (...nums: arnum[]): arnum => nums.reduce(addTwoArnums, [0])
 
 export const addRationalNumbers = (num1: RN, num2: RN): RN => {
   if (num1.isZero()) return new RN(num2)
