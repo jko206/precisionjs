@@ -1,22 +1,22 @@
-import { stringOption, validArgs, positivity } from '../static/ducks'
-import { Whole } from './arnum'
+import { stringOption, arnum, validArgs } from '../static/ducks'
+import { WholeNumber } from './arnum'
 import { IRationalNumber } from '../static/interfaces'
 
 class RationalNumber implements IRationalNumber {
-  numer: Whole
-  denom: Whole
+  numer: WholeNumber
+  denom: WholeNumber
   positivity: -1 | 0 | 1
 
-  constructor(numer: validArgs, denom: string | number | Whole, isPositive: boolean = true) {
+  constructor(numer: arnum, denom: arnum | null, isPositive: boolean = true) {
     if (numer instanceof RationalNumber) {
       const clone = numer.clone()
       this.numer = clone.numer
       this.denom = clone.denom
       this.positivity = clone.positivity
     } else {
-      this.denom = new Whole(denom)
+      this.denom = new WholeNumber(denom)
       if (this.denom.isZero()) throw new Error(`Invalid argument: ${denom}`)
-      this.numer = new Whole(numer)
+      this.numer = new WholeNumber(numer)
       this.positivity = this.numer.isZero() ? 0 : isPositive ? 1 : -1
     }
   }
