@@ -1,5 +1,6 @@
+import { arnum } from '../ducks'
 import { addArnums } from './add/index'
-type arnum = number[]
+
 /**
  * @param {a} obj An array of numbers, where each index has a 0 <= number < ARNUM_BASE
  * @param {b} obj An array of numbers, where each index has a 0 <= number < ARNUM_BASE

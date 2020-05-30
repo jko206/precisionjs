@@ -8,7 +8,7 @@ export type stringOption = {
   roundTo: 'repeat' | number // 2 => 10^2 => round to 100th, -2 => 0.01 => round to 0.01th
 }
 
-export type validArguments = string | number | number[] | RationalNumber | Arnum
+export type validArgs = string | number | number[] | RationalNumber | Arnum
 
 export type arnum = number[]
 

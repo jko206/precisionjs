@@ -1,6 +1,5 @@
 import getArnum from './arnum'
 import { ARNUM_BASE } from '../../constants/index'
-import arnum from './arnum'
 import { checkIoMatch } from '../../util/test-util'
 
 // 3 => ARNUM_BASE**3

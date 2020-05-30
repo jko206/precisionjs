@@ -1,6 +1,5 @@
-type arnum = number[]
+import { arnum } from '../ducks'
 
-// arnum
 // a > b => 1
 // a === b => 0
 // a < b => -1

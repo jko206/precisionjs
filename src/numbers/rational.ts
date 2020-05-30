@@ -1,4 +1,4 @@
-import { stringOption } from './ducks'
+import { stringOption, validArgs } from '../ducks'
 import Arnum from './arnum/index'
 
 interface IRationalNumber {
@@ -20,7 +20,7 @@ class RationalNumber implements IRationalNumber {
   denom: Arnum
   positivity: -1 | 0 | 1
 
-  constructor(n: number | string | RationalNumber | Arnum) {
+  constructor(n: validArgs) {
     if (n instanceof RationalNumber) {
       this.numer = new Arnum(n.numer)
       this.denom = new Arnum(n.denom)
