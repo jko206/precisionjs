@@ -1,6 +1,6 @@
 import { LOG_10_ARNUM_BASE, ARNUM_BASE } from '../constants/index'
 import { stringOption } from '../ducks'
-import constructorHelper from './natural/arnum'
+import constructorHelper from './arnum'
 import { isArray } from 'util'
 interface IArnum {
   digits: number[]

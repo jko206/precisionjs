@@ -1,6 +1,6 @@
 import { stripZeros } from '../util/misc'
 import isNatural from '../bools/natural'
-import getArnum from '../numbers/natural/arnum'
+import getArnum from '../numbers/arnum'
 import isZero from '../bools/zero'
 import { ZERO } from '../constants/index'
 

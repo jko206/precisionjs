@@ -1,6 +1,6 @@
-import { LOG_10_ARNUM_BASE } from '../../constants/index'
+import { LOG_10_ARNUM_BASE } from '../constants/index'
 
-export default function (str: string) {
+function getArnum(str: string) {
   let arr = []
   while (str.length > LOG_10_ARNUM_BASE) {
     const chunk = str.substring(str.length - LOG_10_ARNUM_BASE)
@@ -12,3 +12,5 @@ export default function (str: string) {
   while (arr[arr.length - 1] === 0) arr.pop()
   return arr
 }
+
+export default getArnum

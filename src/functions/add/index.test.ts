@@ -1,5 +1,5 @@
 import { addArnums } from './index'
-import getArnum from '../../numbers/natural/arnum'
+import getArnum from '../../numbers/arnum'
 import { checkIoMatch } from '../../util/test-util'
 
 const a = getArnum('375801024789183707523620150398520054526152638173950')

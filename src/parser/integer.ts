@@ -1,4 +1,4 @@
-import getArnum from '../numbers/natural/arnum'
+import getArnum from '../numbers/arnum'
 
 export default (n: string) => ({
   numerator: getArnum(n),

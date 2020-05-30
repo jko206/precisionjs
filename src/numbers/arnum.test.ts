@@ -1,6 +1,6 @@
 import getArnum from './arnum'
-import { ARNUM_BASE } from '../../constants/index'
-import { checkIoMatch } from '../../util/test-util'
+import { checkIoMatch } from '../util/test-util'
+import { ARNUM_BASE } from '../constants/index'
 
 // 3 => ARNUM_BASE**3
 function getPowerOfArnumBase(exp: number) {

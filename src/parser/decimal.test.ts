@@ -1,4 +1,3 @@
-import { ARNUM_BASE } from '../constants/index'
 import { terminatingDec, repeatingDec } from './decimal'
 
 describe('decimal.js', () => {
