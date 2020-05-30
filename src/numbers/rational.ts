@@ -20,11 +20,15 @@ class RationalNumber implements IRationalNumber {
   denom: Arnum
   positivity: -1 | 0 | 1
 
-  constructor(n: number | string | RationalNumber) {
+  constructor(n: number | string | RationalNumber | Arnum) {
     if (n instanceof RationalNumber) {
       this.numer = new Arnum(n.numer)
       this.denom = new Arnum(n.denom)
       this.positivity = n.positivity
+    } else if (n instanceof Arnum) {
+      this.numer = new Arnum(n)
+      this.denom = new Arnum(1)
+      this.positivity = n.isZero() ? 0 : 1
     } else {
       this.numer = new Arnum(3)
       this.denom = new Arnum(3)
