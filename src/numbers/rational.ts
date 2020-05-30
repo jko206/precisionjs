@@ -1,25 +1,23 @@
-import { stringOption, validArgs } from '../static/ducks'
-import Natural from './natural'
+import { stringOption, validArgs, positivity } from '../static/ducks'
+import { Arnum } from './arnum'
 import { IRationalNumber } from '../static/interfaces'
 
 class RationalNumber implements IRationalNumber {
-  numer: Natural
-  denom: Natural
+  numer: Arnum
+  denom: Arnum
   positivity: -1 | 0 | 1
 
-  constructor(n: validArgs) {
-    if (n instanceof RationalNumber) {
-      this.numer = new Natural(n.numer)
-      this.denom = new Natural(n.denom)
-      this.positivity = n.positivity
-    } else if (n instanceof Natural) {
-      this.numer = new Natural(n)
-      this.denom = new Natural(1)
-      this.positivity = 1
+  constructor(numer: validArgs, denom: string | number | Arnum, isPositive: boolean = true) {
+    if (numer instanceof RationalNumber) {
+      const clone = numer.clone()
+      this.numer = clone.numer
+      this.denom = clone.denom
+      this.positivity = clone.positivity
     } else {
-      this.numer = new Natural(3)
-      this.denom = new Natural(3)
-      this.positivity = 1
+      this.denom = new Arnum(denom)
+      if (this.denom.isZero()) throw new Error(`Invalid argument: ${denom}`)
+      this.numer = new Arnum(numer)
+      this.positivity = this.numer.isZero() ? 0 : isPositive ? 1 : -1
     }
   }
 
@@ -39,6 +37,10 @@ class RationalNumber implements IRationalNumber {
   }
   isZero() {
     return this.positivity === 0
+  }
+
+  clone() {
+    return new RationalNumber(this.numer.clone(), this.denom.clone(), this.positivity === 1)
   }
 }
 

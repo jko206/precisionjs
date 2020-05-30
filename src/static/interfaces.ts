@@ -1,4 +1,4 @@
-import { positivity, stringOption } from './ducks'
+import { positivity, stringOption, arnum } from './ducks'
 
 export interface INumber {
   valueOf: () => number
@@ -8,8 +8,8 @@ export interface INumber {
 export interface IRationalNumber extends INumber {
   positivity: positivity
 
-  numer: INatural
-  denom: INatural
+  numer: IArnum
+  denom: IArnum
 
   isNatural: () => boolean
   isInteger: () => boolean
@@ -17,6 +17,6 @@ export interface IRationalNumber extends INumber {
   // isRepeatingDecimal: () => boolean
 }
 
-export interface INatural extends INumber {
-  digits: number[]
+export interface IArnum extends INumber {
+  digits: arnum
 }
