@@ -1,7 +1,7 @@
 import { stripZeros } from '../util/misc'
-import isNatural from '../bools/natural'
+import isNatural from '../definitions/natural'
 import getArnum from '../numbers/arnum'
-import isZero from '../bools/zero'
+import isZero from '../definitions/zero'
 import { ZERO } from '../constants/index'
 
 const format = (n: string) => {
