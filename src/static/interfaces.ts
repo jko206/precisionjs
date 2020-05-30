@@ -8,8 +8,8 @@ export interface INumber {
 export interface IRationalNumber extends INumber {
   positivity: positivity
 
-  numer: IArnum
-  denom: IArnum
+  numer: IWhole
+  denom: IWhole
 
   isNatural: () => boolean
   isInteger: () => boolean
@@ -17,6 +17,6 @@ export interface IRationalNumber extends INumber {
   // isRepeatingDecimal: () => boolean
 }
 
-export interface IArnum extends INumber {
+export interface IWhole extends INumber {
   digits: arnum
 }
