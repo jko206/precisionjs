@@ -1,6 +1,7 @@
 import { LOG_10_ARNUM_BASE } from '../constants/index'
+import { arnum } from '../ducks'
 
-function getArnum(str: string) {
+function getArnum(str: string): arnum {
   let arr = []
   while (str.length > LOG_10_ARNUM_BASE) {
     const chunk = str.substring(str.length - LOG_10_ARNUM_BASE)
