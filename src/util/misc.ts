@@ -5,3 +5,13 @@ export const stripZeros = (str: string) => {
 
   return str || '0'
 }
+
+// TODO: be able to handle -(-(----1)) and such
+export const processNegativeNumber = (num: string) => {
+  let isNegative = false
+  while (num[0] === '-') {
+    isNegative = !isNegative
+    num = num.substr(1)
+  }
+  return { isNegative, num }
+}
