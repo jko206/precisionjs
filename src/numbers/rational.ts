@@ -1,23 +1,23 @@
 import { stringOption, arnum, validArgs } from '../static/ducks'
 import { WholeNumber } from './arnum'
 import { IRationalNumber } from '../static/interfaces'
+import isZero from '../definitions/zero'
 
 class RationalNumber implements IRationalNumber {
   numer: WholeNumber
   denom: WholeNumber
   positivity: -1 | 0 | 1
 
-  constructor(numer: arnum, denom: arnum | null, isPositive: boolean = true) {
-    if (numer instanceof RationalNumber) {
-      const clone = numer.clone()
-      this.numer = clone.numer
-      this.denom = clone.denom
-      this.positivity = clone.positivity
+  constructor(numer: arnum, denom: arnum = [1], isNegative: boolean = false) {
+    if (isZero(denom)) {
+      throw new Error(`Invalid argument denom: ${denom}. Denom can't be 0.`)
+    }
+    this.numer = new WholeNumber(numer)
+    this.denom = new WholeNumber(denom)
+    if (this.numer.isZero()) {
+      this.positivity = 0
     } else {
-      this.denom = new WholeNumber(denom)
-      if (this.denom.isZero()) throw new Error(`Invalid argument: ${denom}`)
-      this.numer = new WholeNumber(numer)
-      this.positivity = this.numer.isZero() ? 0 : isPositive ? 1 : -1
+      this.positivity = isNegative ? -1 : 1
     }
   }
 
@@ -25,7 +25,7 @@ class RationalNumber implements IRationalNumber {
     return this.numer.valueOf() / this.denom.valueOf()
   }
   toString(options?: stringOption) {
-    return `${this.numer}/${this.denom}`
+    return `${this.numer.toString()}/${this.denom.toString()}`
   }
 
   isInteger() {
@@ -40,7 +40,11 @@ class RationalNumber implements IRationalNumber {
   }
 
   clone() {
-    return new RationalNumber(this.numer.clone(), this.denom.clone(), this.positivity === 1)
+    return new RationalNumber(
+      this.numer.getDigits(),
+      this.denom.getDigits(),
+      this.positivity === -1,
+    )
   }
 }
 

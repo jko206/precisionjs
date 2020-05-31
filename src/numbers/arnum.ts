@@ -1,6 +1,7 @@
-import { LOG_10_ARNUM_BASE } from '../static/constants'
-import { arnum } from '../static/ducks'
+import { LOG_10_ARNUM_BASE, ZERO } from '../static/constants'
+import { arnum, validArgs } from '../static/ducks'
 import { IWholeNumber } from '../static/interfaces'
+import { isArnumZero } from '../definitions/zero'
 
 function getArnum(str: string): arnum {
   let arr = []
@@ -17,8 +18,8 @@ function getArnum(str: string): arnum {
 
 export class WholeNumber implements IWholeNumber {
   digits: arnum
-  constructor(arg: arnum | string | number | WholeNumber) {
-    this.digits = [1]
+  constructor(n: arnum) {
+    this.digits = n
   }
   valueOf() {
     return 0
@@ -28,7 +29,11 @@ export class WholeNumber implements IWholeNumber {
   }
 
   isZero() {
-    return !this.digits.length || (this.digits.length === 1 && this.digits[0] === 0)
+    return isArnumZero(this.digits)
+  }
+
+  getDigits() {
+    return [...this.digits]
   }
 
   clone() {
