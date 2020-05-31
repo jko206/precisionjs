@@ -3,6 +3,7 @@ import isNatural from '../definitions/natural'
 import getArnum from '../numbers/arnum'
 import isZero from '../definitions/zero'
 import { ZERO } from '../static/constants'
+import { arnum } from '../static/ducks'
 
 const format = (n: string) => {
   if (n[0] === '.') return `0${n}`
@@ -12,7 +13,7 @@ const format = (n: string) => {
 
 export const terminatingDec = (n: string) => {
   n = stripZeros(n)
-  if (isNatural(n)) return getArnum(n)
+  if (isNatural(n)) return { numerator: getArnum(n), denominator: [1] }
   if (isZero(n)) return ZERO
   n = format(n)
 
@@ -26,7 +27,12 @@ export const terminatingDec = (n: string) => {
 }
 
 // PRE: isRepeatingDec(n) is true
-export const repeatingDec = (n: string) => {
+export const repeatingDec = (
+  n: string,
+): {
+  repDecArnum: { numerator: arnum; denominator: arnum }
+  termDecArnum: { numerator: arnum; denominator: arnum }
+} => {
   // Split the input into terminating and repeating decimal parts
   const [front, back] = n.split('...')
 
