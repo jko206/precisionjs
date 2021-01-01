@@ -1,5 +1,3 @@
-import { isArray } from 'util'
-
 type testCase = { input: any; expected: any }
 
 type fn = (...arg: any[]) => any
@@ -18,7 +16,7 @@ export const checkIoMatch = (
 
       describe(`${description}`, () => {
         testCases.forEach(({ input, expected }, j) => {
-          if (!isArray(input)) input = [input]
+          if (!Array.isArray(input)) input = [input]
           const output = fn(...input)
 
           test(`Test case #${j + 1}: ${input} => ${expected}`, () => {
