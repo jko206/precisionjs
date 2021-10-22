@@ -8,10 +8,9 @@ import isNatural from '../definitions/natural'
 import getArnum from '../numbers/arnum'
 import { processNegativeNumber } from '../util/misc'
 
-const parser = (num: number | string): RationalNumber => {
-  const processed = processNegativeNumber(`${num}`)
-  num = processed.num
-  const { isNegative } = processed
+const parser = (input: number | string): RationalNumber => {
+  const processed = processNegativeNumber(`${input}`)
+  const { isNegative, num } = processed
   if (isZero(num)) {
     return new RationalNumber([0], [1])
   }
