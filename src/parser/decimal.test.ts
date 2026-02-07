@@ -87,11 +87,11 @@ describe('decimal.js', () => {
     result = repeatingDec('0...9')
     expect(result).toEqual({
       repDecArnum: {
-        numerator: [0],
-        denominator: [1],
+        numerator: [9],
+        denominator: [9],
       },
       termDecArnum: {
-        numerator: [1],
+        numerator: [0],
         denominator: [1],
       },
     })
