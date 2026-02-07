@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "target": "es2015",
-    "lib": ["es2015", "es2016"],
+    "target": "ES2022",
+    "lib": ["ES2023"],
     "allowJs": true,
     "declaration": true,
     "outDir": "dist",
