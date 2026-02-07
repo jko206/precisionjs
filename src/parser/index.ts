@@ -8,7 +8,7 @@ import isNatural from '../definitions/natural'
 import getArnum from '../numbers/arnum'
 import { processNegativeNumber } from '../util/misc'
 
-const parser = (input: number | string): RationalNumber => {
+export const parser = (input: number | string): RationalNumber => {
   const processed = processNegativeNumber(`${input}`)
   const { isNegative, num } = processed
   if (isZero(num)) {
@@ -41,5 +41,3 @@ const parser = (input: number | string): RationalNumber => {
     throw new Error(`Invalid argument: ${num}`)
   }
 }
-
-export default parser
