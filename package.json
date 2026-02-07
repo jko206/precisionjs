@@ -6,6 +6,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "vitest run",
+    "check-type": "tsc --noEmit",
     "build": "tsc"
   },
   "repository": "git+https://github.com/jaiko86/precisionjs.git",
