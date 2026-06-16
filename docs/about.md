@@ -31,3 +31,10 @@ integers, both of which have more than 200 digits, it'll take us a long time to 
 but as humans, we can do it. Something like the JS console or REPL can't do that. It'll turn the
 numbers into scientific notation and lose precision. The goal of this library is to perform math
 operations without losing any precision.
+
+## Goal
+
+The goal of this library is to perform math operations without losing any precision with rational
+numbers and some simple irrational numbers, such as square roots and pi and e. If this package
+becomes popular, I'd like to add support for more complex irrational numbers, such as logarithms and
+trigonometric functions.
