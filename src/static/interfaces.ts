@@ -1,22 +1,12 @@
-import { positivity, stringOption, arnum } from './ducks'
+import { positivity, arnum } from './ducks'
 
-export interface INumber {
-  valueOf: () => number
-  toString: () => string
-}
-
-export interface IRationalNumber extends INumber {
+export type RationalNumber = {
   positivity: positivity
-
-  numer: IWholeNumber
-  denom: IWholeNumber
-
-  isNatural: () => boolean
-  isInteger: () => boolean
-  isZero: () => boolean
-  // isRepeatingDecimal: () => boolean
+  numer: WholeNumber
+  denom: WholeNumber
 }
 
-export interface IWholeNumber extends INumber {
+export type WholeNumber = {
   digits: arnum
 }
+

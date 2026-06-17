@@ -47,7 +47,7 @@ describe('decimal.js', () => {
   })
 
   it('parses repeating decimal', () => {
-    let result = repeatingDec('0.1...1')
+    let result = repeatingDec('0.1(1)')
     expect(result).toEqual({
       repDecArnum: {
         numerator: [1],
@@ -59,7 +59,7 @@ describe('decimal.js', () => {
       },
     })
 
-    result = repeatingDec('0.1...1234')
+    result = repeatingDec('0.1(1234)')
     expect(result).toEqual({
       repDecArnum: {
         numerator: [1234],
@@ -71,7 +71,7 @@ describe('decimal.js', () => {
       },
     })
 
-    result = repeatingDec('0.1234...1234')
+    result = repeatingDec('0.1234(1234)')
     expect(result).toEqual({
       repDecArnum: {
         numerator: [1234],
@@ -82,9 +82,9 @@ describe('decimal.js', () => {
         denominator: [10000],
       },
     })
-    // TOOD: fix this case
+
     // returns {rep: {n: [9], d: [9]}} <-- this should be 1
-    result = repeatingDec('0...9')
+    result = repeatingDec('0.(9)')
     expect(result).toEqual({
       repDecArnum: {
         numerator: [9],

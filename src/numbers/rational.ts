@@ -1,51 +1,71 @@
 import { stringOption, arnum, validArgs } from '../static/ducks'
-import { WholeNumber } from './arnum'
-import { IRationalNumber } from '../static/interfaces'
+import {
+  createWholeNumber,
+  isWholeNumberZero,
+  wholeNumberValueOf,
+  wholeNumberToString,
+  getWholeNumberDigits,
+} from './arnum'
+import { RationalNumber } from '../static/interfaces'
 import isZero from '../definitions/zero'
 
-class RationalNumber implements IRationalNumber {
-  numer: WholeNumber
-  denom: WholeNumber
-  positivity: -1 | 0 | 1
-
-  constructor(numer: arnum, denom: arnum = [1], isNegative: boolean = false) {
-    if (isZero(denom)) {
-      throw new Error(`Invalid argument denom: ${denom}. Denom can't be 0.`)
-    }
-    this.numer = new WholeNumber(numer)
-    this.denom = new WholeNumber(denom)
-    if (this.numer.isZero()) {
-      this.positivity = 0
-    } else {
-      this.positivity = isNegative ? -1 : 1
-    }
+export const createRationalNumber = (
+  numer: arnum,
+  denom: arnum = [1],
+  isNegative: boolean = false,
+): RationalNumber => {
+  if (isZero(denom)) {
+    throw new Error(`Invalid argument denom: ${denom}. Denom can't be 0.`)
   }
-
-  valueOf() {
-    return this.numer.valueOf() / this.denom.valueOf()
+  const numerWhole = createWholeNumber(numer)
+  const denomWhole = createWholeNumber(denom)
+  let positivity: -1 | 0 | 1
+  if (isWholeNumberZero(numerWhole)) {
+    positivity = 0
+  } else {
+    positivity = isNegative ? -1 : 1
   }
-  toString(options?: stringOption) {
-    return `${this.numer.toString()}/${this.denom.toString()}`
-  }
-
-  isInteger() {
-    const denom = this.denom.digits
-    return denom.length === 1 && denom[0] === 1
-  }
-  isNatural() {
-    return this.positivity === 1 && this.isInteger()
-  }
-  isZero() {
-    return this.positivity === 0
-  }
-
-  clone() {
-    return new RationalNumber(
-      this.numer.getDigits(),
-      this.denom.getDigits(),
-      this.positivity === -1,
-    )
+  return {
+    numer: numerWhole,
+    denom: denomWhole,
+    positivity,
   }
 }
 
-export default RationalNumber
+export const rationalNumberValueOf = (rn: RationalNumber) => {
+  if (rn.positivity === 0) return 0
+  return rn.positivity * (wholeNumberValueOf(rn.numer) / wholeNumberValueOf(rn.denom))
+}
+
+export const rationalNumberToString = (rn: RationalNumber, options?: stringOption) => {
+  if (rn.positivity === 0) return '0'
+  const sign = rn.positivity === -1 ? '-' : ''
+  const numerStr = wholeNumberToString(rn.numer)
+  if (isWholeNumberZero(rn.denom) || (rn.denom.digits.length === 1 && rn.denom.digits[0] === 1)) {
+    return `${sign}${numerStr}`
+  }
+  return `${sign}${numerStr}/${wholeNumberToString(rn.denom)}`
+}
+
+export const isRationalNumberInteger = (rn: RationalNumber) => {
+  const denom = rn.denom.digits
+  return denom.length === 1 && denom[0] === 1
+}
+
+export const isRationalNumberNatural = (rn: RationalNumber) => {
+  return rn.positivity === 1 && isRationalNumberInteger(rn)
+}
+
+export const isRationalNumberZero = (rn: RationalNumber) => {
+  return rn.positivity === 0
+}
+
+export const cloneRationalNumber = (rn: RationalNumber) => {
+  return createRationalNumber(
+    getWholeNumberDigits(rn.numer),
+    getWholeNumberDigits(rn.denom),
+    rn.positivity === -1,
+  )
+}
+
+export default createRationalNumber

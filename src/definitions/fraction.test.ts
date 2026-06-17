@@ -72,5 +72,6 @@ checkIoMatch(
   [
     { description: 'isFraction: regular fractions', fn: isFraction },
     { description: 'isFraction: mixed numbers', fn: isFraction },
+    { description: 'isFraction: edge cases', fn: isFraction },
   ],
 )

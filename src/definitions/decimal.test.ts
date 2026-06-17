@@ -10,21 +10,19 @@ const decTestCases = [
   { input: '01234.0', expected: false },
 ]
 
-const repDecTestCases = [
-  { input: '1234...3', expected: true },
-  { input: '1234...3333', expected: true },
-  { input: '0...3333', expected: true },
-  { input: '0.123...3333', expected: true },
-  { input: '0.123...333', expected: true },
-  { input: '0.123...', expected: false },
-  { input: '...123', expected: false },
-]
+describe('isRepeatingDec', () => {
+    test.each([
+      ['1234(3)', true],
+      ['1234(3333)', true],
+      ['0.(3333)', true],
+      ['0.123(3333)', true],
+      ['0.123(333)', true],
+      ['0.123()', false],
+      ['(123)', false],
+    ])('Test case #%# %s => %s', (input: string, expected: boolean) => {
+      const output = isRepeatingDec(input)
+      expect(output).toBe(expected)
+    })
+  })
 
-checkIoMatch(
-  'decimal.ts',
-  [decTestCases, repDecTestCases],
-  [
-    { description: 'isTerminatingDec', fn: isTerminatingDec },
-    { description: 'isRepeatingDec', fn: isRepeatingDec },
-  ],
-)
+checkIoMatch('decimal.ts', [decTestCases], [{ description: 'isTerminatingDec', fn: isTerminatingDec }])

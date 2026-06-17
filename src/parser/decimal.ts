@@ -34,10 +34,11 @@ export const repeatingDec = (
   termDecArnum: { numerator: arnum; denominator: arnum }
 } => {
   // Split the input into terminating and repeating decimal parts
-  const [front, back] = n.split('...')
+  const match = n.match(/^(.*)\((.*)\)$/)
+  if (!match) throw new Error(`Invalid repeating decimal format: ${n}`)
+  const [, front, back] = match
 
   // count the number of decimal numbers in the terminating part
-  // TODO: handle cases when front.match() returns null
   const termDec = (front.match(/\.\d+$/) || [])[0]
   const termDecDigitCount = termDec ? termDec.length - 1 : 0
 

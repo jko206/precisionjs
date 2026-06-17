@@ -1,6 +1,6 @@
-import { LOG_10_ARNUM_BASE, ZERO } from '../static/constants'
+import { ARNUM_BASE, LOG_10_ARNUM_BASE, ZERO } from '../static/constants'
 import { arnum, validArgs } from '../static/ducks'
-import { IWholeNumber } from '../static/interfaces'
+import { WholeNumber } from '../static/interfaces'
 import { isArnumZero } from '../definitions/zero'
 
 function getArnum(str: string): arnum {
@@ -16,29 +16,29 @@ function getArnum(str: string): arnum {
   return arr
 }
 
-export class WholeNumber implements IWholeNumber {
-  digits: arnum
-  constructor(n: arnum) {
-    this.digits = n
-  }
-  valueOf() {
-    return 0
-  }
-  toString() {
-    return ''
-  }
+export const createWholeNumber = (n: arnum): WholeNumber => ({ digits: n })
 
-  isZero() {
-    return isArnumZero(this.digits)
-  }
+export const wholeNumberValueOf = (wn: WholeNumber) => {
+  return wn.digits.reduce((acc, digit, index) => acc + digit * Math.pow(ARNUM_BASE, index), 0)
+}
 
-  getDigits() {
-    return [...this.digits]
-  }
+export const wholeNumberToString = (wn: WholeNumber) => {
+  if (isWholeNumberZero(wn) || wn.digits.length === 0) return '0'
+  const strings = wn.digits.map((n) => n.toString())
+  const last = strings.pop() as string
+  return last + strings.map((s) => s.padStart(LOG_10_ARNUM_BASE, '0')).reverse().join('')
+}
 
-  clone() {
-    return new WholeNumber([...this.digits])
-  }
+export const isWholeNumberZero = (wn: WholeNumber) => {
+  return isArnumZero(wn.digits)
+}
+
+export const getWholeNumberDigits = (wn: WholeNumber) => {
+  return [...wn.digits]
+}
+
+export const cloneWholeNumber = (wn: WholeNumber) => {
+  return createWholeNumber([...wn.digits])
 }
 
 export default getArnum
