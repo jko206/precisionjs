@@ -1,6 +1,15 @@
-// import parser from "./util/parser";
+// Core AST Types
+export * from './core/types';
 
-export { addArnums } from './functions/add'
-export { subtractArnums } from './functions/subtract'
-export { multiplyArnums } from './functions/multiply'
-export { default as getArnum } from './numbers/arnum'
+// Functional Core Math (Tier 2)
+export { add, sub, mul, div, simplify, gcd } from './core/math';
+
+// Primitive Parser
+export { parse } from './core/parser';
+
+// Fraction Constructor (Tier 3)
+export { frac } from './core/frac';
+
+// Precision Class Wrapper
+export { Precision, prec, RoundingMode } from './core/precision';
+export type { FractionFormatOptions } from './core/precision';
