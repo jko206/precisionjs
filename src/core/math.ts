@@ -137,3 +137,38 @@ export const sub = (a: PrecisionNode, b: PrecisionNode): PrecisionNode => {
     e: e_min,
   });
 };
+
+export const pow = (base: PrecisionNode, exponent: PrecisionNode): PrecisionNode => {
+  const rBase = assertRational(base);
+  const rExp = assertRational(exponent);
+
+  if (rExp.d !== 1n || rExp.e !== 0n) {
+    throw new Error('Exponent must be an exact integer');
+  }
+
+  let exp = rExp.n;
+  if (exp === 0n) return { type: 'rational', n: 1n, d: 1n, e: 0n };
+
+  const isNegative = exp < 0n;
+  if (isNegative) exp = -exp;
+
+  let n = rBase.n ** exp;
+  let d = rBase.d ** exp;
+  let e = rBase.e * exp;
+
+  if (isNegative) {
+    // invert
+    const temp = n;
+    n = d;
+    d = temp;
+    e = -e;
+
+    // ensure positive denominator
+    if (d < 0n) {
+      n = -n;
+      d = -d;
+    }
+  }
+
+  return simplify({ type: 'rational', n, d, e });
+};

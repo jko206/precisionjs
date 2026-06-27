@@ -13,3 +13,6 @@ export { frac } from './core/frac';
 // Precision Class Wrapper
 export { Precision, prec, RoundingMode } from './core/precision';
 export type { FractionFormatOptions } from './core/precision';
+
+// Tier 1 Lexer/Evaluator Compiler API
+export { compile, evaluate, CompiledExpression } from './lexer/compiler';

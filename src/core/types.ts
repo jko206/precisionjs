@@ -1,4 +1,4 @@
-export type PrecisionNode = RationalNode | RootNode | FunctionNode;
+export type PrecisionNode = RationalNode | RootNode;
 
 /**
  * Represents: (n / d) * 10^e
@@ -18,13 +18,4 @@ export interface RootNode {
   type: 'root';
   index: number; // 2 for square root, 3 for cube root
   radical: PrecisionNode; // The inner value
-}
-
-/**
- * Placeholder for future Function AST Node (Tier 1 Lexer/Evaluator)
- */
-export interface FunctionNode {
-  type: 'function';
-  name: string;
-  args: PrecisionNode[];
 }
