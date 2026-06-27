@@ -19,9 +19,9 @@ export class Precision {
 
   constructor(input: PrecisionNode | string | number | bigint) {
     if (typeof input === 'object' && input !== null && 'type' in input) {
-      this.node = input;
+      this.node = input as PrecisionNode;
     } else {
-      this.node = parse(input);
+      this.node = parse(input as string | number | bigint);
     }
   }
 

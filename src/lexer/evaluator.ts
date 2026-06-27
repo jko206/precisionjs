@@ -45,7 +45,7 @@ export const evaluateAST = (node: ExprNode, scope: Scope = {}): PrecisionNode =>
         case '/': return div(left, right);
         case '^': return pow(left, right);
         default:
-          throw new Error(`Unknown binary operator: ${node.operator}`);
+          throw new Error(`Unknown binary operator: ${(node as any).operator}`);
       }
     }
     
