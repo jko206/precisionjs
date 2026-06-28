@@ -66,4 +66,38 @@ describe('Lexer / Evaluator', () => {
   test('unsupported root addition throws error', () => {
     expect(() => evaluate('sqrt(2) + 3')).toThrow(/Unsupported operation on non-rational node/);
   });
+
+  describe('complex expressions', () => {
+    test.each`
+      expr                                          | expected
+      ${'2 + 3 * 4 ^ 2 - 10 / 5'}                   | ${'48'}
+      ${'(((2 + 3) * 4) - 5) ^ 2'}                  | ${'225'}
+      ${'2 ^ 3 ^ 2'}                                | ${'512'}
+      ${'-2 ^ 4'}                                   | ${'16'} 
+      ${'10^10 * 10^-5'}                            | ${'100000'}
+      ${'1.5e3 * 0.(3) + 4 / 8'}                    | ${'500.5'}
+      ${'(1 + 2) * (3 + 4) / (5 + 2)'}              | ${'3'}
+      ${'0.1 + 0.2'}                                | ${'0.3'}
+      ${'1/3 + 1/3 + 1/3'}                          | ${'1'}
+      ${'(0.123456789 * 9) / 9'}                    | ${'0.123456789'}
+      ${'(2^10) * (5^10)'}                          | ${'10000000000'}
+    `('evaluate("$expr") === $expected', ({ expr, expected }) => {
+      expect(evaluate(expr).toString()).toBe(expected);
+    });
+
+    test('complex variable injection', () => {
+      const scope = { a: 1.5, b: 2, c: 3, d: 0.5, e: 2, f: -1 };
+      // a * b / c + d - e^f = 1.5 * 2 / 3 + 0.5 - 2^-1 = 3/3 + 0.5 - 0.5 = 1
+      expect(evaluate('a * b / c + d - e^f', scope).toString()).toBe('1');
+      
+      const geomScope = { x: 3, y: 4 };
+      // Math functions evaluate their arguments first, so sqrt(25) works!
+      const result = evaluate('sqrt(x^2 + y^2)', geomScope);
+      expect(result.node.type).toBe('root');
+      if (result.node.type === 'root') {
+        expect(result.node.index).toBe(2);
+        expect((result.node.radical as RationalNode).n).toBe(25n);
+      }
+    });
+  });
 });

@@ -142,11 +142,11 @@ export const pow = (base: PrecisionNode, exponent: PrecisionNode): PrecisionNode
   const rBase = assertRational(base);
   const rExp = assertRational(exponent);
 
-  if (rExp.d !== 1n || rExp.e !== 0n) {
+  if (rExp.d !== 1n || rExp.e < 0n) {
     throw new Error('Exponent must be an exact integer');
   }
 
-  let exp = rExp.n;
+  let exp = rExp.n * (10n ** rExp.e);
   if (exp === 0n) return { type: 'rational', n: 1n, d: 1n, e: 0n };
 
   const isNegative = exp < 0n;
