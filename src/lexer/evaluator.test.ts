@@ -100,4 +100,36 @@ describe('Lexer / Evaluator', () => {
       }
     });
   });
+
+  describe('extreme edge cases and limits', () => {
+    test.each`
+      expr                                          | expected
+      ${'0.(001) * 999'}                            | ${'1'}
+      ${'-0.(142857) * 7'}                          | ${'-1'}
+      ${'1e200 * 1e-200 + 1'}                       | ${'2'}
+      ${'(2 ^ 100) / (2 ^ 99)'}                     | ${'2'}
+      ${'(-1) ^ 101'}                               | ${'-1'}
+      ${'(-1) ^ 100'}                               | ${'1'}
+      ${'(0.(3) + -1.5) * 6'}                       | ${'-7'}
+      ${'0.(9) * 5'}                                | ${'5'}
+      ${'-2.5e-3 * -400'}                           | ${'1'}
+      ${'1.25e100 * 8e-100'}                        | ${'10'}
+      ${'1 / 3 * 3'}                                | ${'1'}
+    `('evaluate("$expr") === $expected', ({ expr, expected }) => {
+      expect(evaluate(expr).toString()).toBe(expected);
+    });
+
+    test('complex variable injection with frac() and repeating decimals', () => {
+      // Note: testing frac injection which bypasses parser limitations!
+      const scope = { 
+        m_frac: { type: 'rational', n: -7n, d: 3n, e: 0n }, // -7/3 equivalent to frac({ whole: -2, n: 1, d: 3 })
+        massive: new Precision('1e300'),
+        repeat: new Precision('-0.(9)'), // effectively -1
+      };
+      
+      expect(evaluate('m_frac * 3', scope).toString()).toBe('-7');
+      expect(evaluate('massive / 1e299', scope).toString()).toBe('10');
+      expect(evaluate('repeat + 2', scope).toString()).toBe('1');
+    });
+  });
 });
